@@ -36,7 +36,7 @@
 }
 html,body{
   height:100%;font-family:var(--font);background:var(--bg-primary);
-  color:var(--text-primary);overflow:hidden;
+  color:var(--text-primary);overflow-x:hidden;
 }
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg-secondary)}
@@ -539,8 +539,36 @@ html,body{
   .main{grid-template-columns:240px 1fr 280px}
 }
 @media(max-width:900px){
-  .main{grid-template-columns:1fr;grid-template-rows:auto auto auto}
-  .left-col,.right-col{grid-row:auto}
+  html,body{overflow:auto !important;height:auto !important}
+  .app{height:auto !important;min-height:100vh;grid-template-rows:56px auto}
+  .main{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto !important;
+    overflow:auto !important;
+    height:auto !important;
+    padding:8px;gap:8px;
+  }
+  .left-col,.center-col,.right-col{
+    grid-row:auto !important;
+    overflow:visible !important;
+  }
+  .left-col{order:2}
+  .center-col{order:1}
+  .right-col{order:3}
+  .trading-panel{height:250px !important}
+  .chat-panel{min-height:300px;max-height:400px}
+  .bot-face-card{padding:10px}
+  .bot-face-wrapper{width:80px;height:80px}
+  .bot-face{width:80px;height:80px}
+  .bot-eye{width:14px;height:16px}
+  .bot-eye.left{top:28px;left:20px}
+  .bot-eye.right{top:28px;right:20px}
+  .bot-mouth{bottom:22px}
+  .header-center{display:none}
+  .header-time{display:none}
+  .documents-panel{max-height:300px}
+  .agents-panel{max-height:300px}
+  .quick-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
