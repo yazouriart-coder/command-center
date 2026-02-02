@@ -1,0 +1,26 @@
+{
+  "project": "Trading Bot",
+  "last_updated": "2026-02-02T23:03:24.925652",
+  "mode": "READ_ONLY",
+  "warning": "\ud83d\udd12 Jeg kan KUN l\u00e6se, ikke r\u00f8re!",
+  "kapital": 297.95,
+  "exchange": "bybit",
+  "paper_trading": false,
+  "aabne_positioner": 2,
+  "positioner": [
+    {
+      "symbol": "BTCUSDT",
+      "direction": "SHORT",
+      "entry": "$79,559.40",
+      "status": "OPEN"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "direction": "SHORT",
+      "entry": "$2,397.11",
+      "status": "OPEN"
+    }
+  ],
+  "dagens_pnl": "+$1,247",
+  "win_rate": "68.5%"
+}

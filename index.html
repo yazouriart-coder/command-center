@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClawBot Command Center | Mujaffa</title>
+<style>
+/* ═══════════════════════════════════════════════
+   CLAWBOT COMMAND CENTER - GLOBAL STYLES
+   ═══════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-primary:#0a0e1a;
+  --bg-secondary:#111827;
+  --bg-card:#1a1f35;
+  --bg-card-hover:#212845;
+  --border:#2a3154;
+  --accent:#6c5ce7;
+  --accent-glow:rgba(108,92,231,.3);
+  --green:#00e676;
+  --green-glow:rgba(0,230,118,.2);
+  --red:#ff5252;
+  --red-glow:rgba(255,82,82,.2);
+  --yellow:#ffd740;
+  --yellow-glow:rgba(255,215,64,.2);
+  --blue:#40c4ff;
+  --blue-glow:rgba(64,196,255,.2);
+  --orange:#ff9100;
+  --text-primary:#e8eaf6;
+  --text-secondary:#9e9ebf;
+  --text-dim:#5a5a7a;
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'Cascadia Code','Fira Code','Consolas',monospace;
+  --radius:12px;
+  --radius-sm:8px;
+}
+html,body{
+  height:100%;font-family:var(--font);background:var(--bg-primary);
+  color:var(--text-primary);overflow:hidden;
+}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-secondary)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT - MAIN GRID
+   ═══════════════════════════════════════════════ */
+.app{
+  display:grid;height:100vh;
+  grid-template-rows:56px 1fr;
+  grid-template-columns:1fr;
+}
+.main{
+  display:grid;padding:10px;gap:10px;overflow:hidden;
+  grid-template-columns:280px 1fr 320px;
+  grid-template-rows:auto 1fr;
+}
+
+/* ═══════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════ */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;background:var(--bg-secondary);
+  border-bottom:1px solid var(--border);
+  z-index:100;
+}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.5px}
+.logo svg{width:32px;height:32px}
+.logo .claw{color:var(--accent)}
+.logo .bot{color:var(--green)}
+.header-status{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;color:var(--text-secondary);
+  background:var(--bg-card);padding:5px 12px;
+  border-radius:20px;border:1px solid var(--border);
+}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);
+  animation:pulse-dot 2s infinite;
+}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 var(--green-glow)}50%{box-shadow:0 0 0 6px transparent}}
+
+.header-center{display:flex;align-items:center;gap:12px}
+.header-tab{
+  padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;
+  cursor:pointer;transition:.2s;border:1px solid transparent;
+  color:var(--text-secondary);background:transparent;
+}
+.header-tab:hover{background:var(--bg-card);color:var(--text-primary)}
+.header-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.header-right{display:flex;align-items:center;gap:14px}
+.header-time{font-size:12px;color:var(--text-secondary);font-family:var(--mono)}
+.header-user{
+  display:flex;align-items:center;gap:8px;
+  padding:4px 12px 4px 4px;border-radius:20px;
+  background:var(--bg-card);border:1px solid var(--border);
+  font-size:12px;font-weight:600;cursor:pointer;
+}
+.header-user:hover{border-color:var(--accent)}
+.user-avatar{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--blue));
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;
+}
+
+/* ═══════════════════════════════════════════════
+   LEFT COLUMN - BOT FACE + DOCUMENTS
+   ═══════════════════════════════════════════════ */
+.left-col{
+  display:flex;flex-direction:column;gap:10px;
+  grid-row:1/3;overflow:hidden;
+}
+/* --- Bot Face --- */
+.bot-face-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);padding:16px;
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;overflow:hidden;
+}
+.bot-face-card::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(from 0deg,transparent,var(--accent-glow),transparent,var(--green-glow),transparent);
+  animation:rotate-bg 8s linear infinite;opacity:.3;
+}
+@keyframes rotate-bg{to{transform:rotate(360deg)}}
+
+.bot-face-wrapper{
+  position:relative;z-index:1;width:120px;height:120px;margin:8px 0;
+}
+.bot-face-ring{
+  position:absolute;inset:-8px;border-radius:50%;
+  border:3px solid var(--accent);opacity:.5;
+  animation:ring-pulse 3s ease-in-out infinite;
+}
+@keyframes ring-pulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.08);opacity:.7}}
+
+.bot-face{
+  width:120px;height:120px;border-radius:50%;
+  background:linear-gradient(160deg,#1a1f35 0%,#252b48 100%);
+  border:2px solid var(--accent);position:relative;
+  overflow:hidden;
+}
+.bot-eye{
+  position:absolute;width:18px;height:22px;
+  background:var(--accent);border-radius:50%;
+  transition:.3s;
+}
+.bot-eye.left{top:38px;left:28px}
+.bot-eye.right{top:38px;right:28px}
+.bot-eye .pupil{
+  width:8px;height:8px;background:#fff;border-radius:50%;
+  position:absolute;top:7px;left:5px;transition:.15s;
+}
+.bot-eye.blink{height:3px !important;top:48px !important}
+
+.bot-mouth{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  width:30px;height:4px;background:var(--accent);border-radius:4px;
+  transition:.3s;
+}
+.bot-mouth.talking{
+  animation:mouth-talk .3s infinite;
+}
+@keyframes mouth-talk{
+  0%,100%{height:4px;border-radius:4px}
+  50%{height:14px;border-radius:50%;width:20px;margin-left:-5px}
+}
+.bot-mouth.happy{
+  height:12px;width:36px;border-radius:0 0 18px 18px;
+  border-top:none;background:transparent;
+  border:3px solid var(--accent);border-top:0;
+  bottom:26px;
+}
+.bot-thinking-dots{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:none;gap:4px;
+}
+.bot-thinking-dots.show{display:flex}
+.bot-thinking-dots span{
+  width:6px;height:6px;background:var(--accent);border-radius:50%;
+  animation:think-bounce .6s infinite;
+}
+.bot-thinking-dots span:nth-child(2){animation-delay:.15s}
+.bot-thinking-dots span:nth-child(3){animation-delay:.3s}
+@keyframes think-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.bot-status{
+  position:relative;z-index:1;text-align:center;margin-top:8px;
+}
+.bot-status-label{
+  font-size:10px;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--green);font-weight:700;
+}
+.bot-status-task{
+  font-size:11px;color:var(--text-secondary);margin-top:4px;
+  max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.bot-mood{
+  position:relative;z-index:1;
+  display:flex;gap:6px;margin-top:8px;
+}
+.mood-btn{
+  padding:3px 10px;border-radius:12px;font-size:10px;
+  border:1px solid var(--border);background:var(--bg-secondary);
+  color:var(--text-secondary);cursor:pointer;transition:.2s;
+}
+.mood-btn:hover,.mood-btn.active{border-color:var(--accent);color:var(--accent)}
+
+/* --- Documents Panel --- */
+.documents-panel{
+  flex:1;background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);display:flex;flex-direction:column;
+  overflow:hidden;min-height:0;
+}
+.panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.panel-title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.panel-title svg{width:16px;height:16px;opacity:.6}
+.panel-badge{
+  font-size:10px;background:var(--accent);color:#fff;
+  padding:1px 7px;border-radius:10px;font-weight:600;
+}
+.panel-search{
+  display:flex;align-items:center;padding:0 14px 10px;flex-shrink:0;
+}
+.panel-search input{
+  width:100%;padding:7px 10px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--bg-secondary);
+  color:var(--text-primary);font-size:12px;outline:none;
+  transition:.2s;
+}
+.panel-search input:focus{border-color:var(--accent)}
+.doc-list{flex:1;overflow-y:auto;padding:4px 8px 8px}
+.doc-folder{margin-bottom:6px}
+.doc-folder-name{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 8px;font-size:11px;font-weight:700;
+  color:var(--text-secondary);cursor:pointer;
+  border-radius:var(--radius-sm);transition:.15s;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.doc-folder-name:hover{background:var(--bg-card-hover);color:var(--text-primary)}
+.doc-folder-name svg{width:14px;height:14px;transition:.2s}
+.doc-folder-name.open svg{transform:rotate(90deg)}
+.doc-folder-items{display:none;padding-left:10px}
+.doc-folder-items.open{display:block}
+.doc-item{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 10px;font-size:12px;cursor:pointer;
+  border-radius:var(--radius-sm);transition:.15s;
+  color:var(--text-secondary);
+}
+.doc-item:hover{background:var(--bg-card-hover);color:var(--text-primary)}
+.doc-item.active{background:var(--accent-glow);color:var(--accent);border:1px solid var(--accent)}
+.doc-icon{width:14px;height:14px;opacity:.5}
+.doc-tag{
+  margin-left:auto;font-size:9px;padding:1px 6px;
+  border-radius:8px;font-weight:600;
+}
+.tag-html{background:var(--blue-glow);color:var(--blue)}
+.tag-md{background:var(--green-glow);color:var(--green)}
+.tag-pdf{background:var(--red-glow);color:var(--red)}
+.tag-json{background:var(--yellow-glow);color:var(--yellow)}
+
+/* ═══════════════════════════════════════════════
+   CENTER COLUMN - TRADING + CHAT
+   ═══════════════════════════════════════════════ */
+.center-col{
+  display:flex;flex-direction:column;gap:10px;
+  overflow:hidden;min-width:0;
+  grid-row:1/3;
+}
+
+/* --- Trading Panel --- */
+.trading-panel{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);display:flex;flex-direction:column;
+  height:320px;flex-shrink:0;
+}
+.trading-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-bottom:1px solid var(--border);
+}
+.trading-pair{display:flex;align-items:center;gap:8px}
+.trading-pair-name{font-size:14px;font-weight:700}
+.trading-pair-price{font-size:13px;font-weight:600;color:var(--green)}
+.trading-pair-change{font-size:11px;padding:2px 6px;border-radius:6px;font-weight:600}
+.trading-pair-change.up{background:var(--green-glow);color:var(--green)}
+.trading-pair-change.down{background:var(--red-glow);color:var(--red)}
+.trading-controls{display:flex;gap:4px}
+.trading-tf{
+  padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;
+  border:1px solid var(--border);background:transparent;
+  color:var(--text-secondary);cursor:pointer;transition:.15s;
+}
+.trading-tf:hover,.trading-tf.active{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+
+.chart-container{flex:1;position:relative;padding:8px;overflow:hidden}
+#tradingChart{width:100%;height:100%}
+
+.trading-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);flex-shrink:0;
+}
+.stat-item{
+  padding:8px 10px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child{border-right:none}
+.stat-label{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+.stat-value{font-size:14px;font-weight:700;font-family:var(--mono);margin-top:2px}
+.stat-value.green{color:var(--green)}
+.stat-value.red{color:var(--red)}
+.stat-value.blue{color:var(--blue)}
+
+/* --- Chat Panel --- */
+.chat-panel{
+  flex:1;background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);display:flex;flex-direction:column;
+  min-height:0;overflow:hidden;
+}
+.chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.chat-msg{
+  max-width:85%;padding:10px 14px;border-radius:14px;
+  font-size:12.5px;line-height:1.5;animation:msg-in .3s ease;
+}
+@keyframes msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{
+  align-self:flex-start;background:var(--bg-secondary);
+  border:1px solid var(--border);border-bottom-left-radius:4px;
+}
+.chat-msg.user{
+  align-self:flex-end;background:var(--accent);
+  color:#fff;border-bottom-right-radius:4px;
+}
+.chat-msg .msg-name{font-size:10px;font-weight:700;margin-bottom:3px;opacity:.6}
+.chat-typing{
+  align-self:flex-start;padding:10px 14px;
+  background:var(--bg-secondary);border:1px solid var(--border);
+  border-radius:14px;border-bottom-left-radius:4px;
+  display:none;gap:4px;align-items:center;
+}
+.chat-typing.show{display:flex}
+.chat-typing span{
+  width:6px;height:6px;background:var(--text-dim);border-radius:50%;
+  animation:typing-dot .8s infinite;
+}
+.chat-typing span:nth-child(2){animation-delay:.2s}
+.chat-typing span:nth-child(3){animation-delay:.4s}
+@keyframes typing-dot{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+
+.chat-input-area{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 12px;border-top:1px solid var(--border);
+}
+.chat-input{
+  flex:1;padding:9px 14px;border-radius:20px;
+  border:1px solid var(--border);background:var(--bg-secondary);
+  color:var(--text-primary);font-size:12.5px;outline:none;
+  font-family:var(--font);transition:.2s;
+}
+.chat-input:focus{border-color:var(--accent)}
+.chat-input::placeholder{color:var(--text-dim)}
+.chat-send{
+  width:36px;height:36px;border-radius:50%;border:none;
+  background:var(--accent);color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:.2s;flex-shrink:0;
+}
+.chat-send:hover{background:#7c6cf7;transform:scale(1.05)}
+.chat-send svg{width:16px;height:16px}
+
+/* ═══════════════════════════════════════════════
+   RIGHT COLUMN - AGENTS + NOTIFICATIONS + QUICK
+   ═══════════════════════════════════════════════ */
+.right-col{
+  display:flex;flex-direction:column;gap:10px;
+  grid-row:1/3;overflow:hidden;
+}
+
+/* --- Agents Panel --- */
+.agents-panel{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);display:flex;flex-direction:column;
+  flex:1;min-height:0;overflow:hidden;
+}
+.agent-list{flex:1;overflow-y:auto;padding:8px}
+.agent-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px;border-radius:var(--radius-sm);
+  border:1px solid transparent;transition:.15s;margin-bottom:4px;
+}
+.agent-item:hover{background:var(--bg-card-hover);border-color:var(--border)}
+.agent-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.agent-icon.seo{background:var(--blue-glow);border:1px solid rgba(64,196,255,.3)}
+.agent-icon.trade{background:var(--green-glow);border:1px solid rgba(0,230,118,.3)}
+.agent-icon.move{background:var(--yellow-glow);border:1px solid rgba(255,215,64,.3)}
+.agent-icon.shop{background:var(--accent-glow);border:1px solid rgba(108,92,231,.3)}
+.agent-icon.scan{background:var(--red-glow);border:1px solid rgba(255,82,82,.3)}
+.agent-info{flex:1;min-width:0}
+.agent-name{font-size:12px;font-weight:700}
+.agent-task{font-size:11px;color:var(--text-secondary);margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.agent-meta{display:flex;align-items:center;gap:8px;margin-top:6px}
+.agent-status{
+  font-size:9px;padding:2px 8px;border-radius:8px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.3px;
+}
+.agent-status.active{background:var(--green-glow);color:var(--green)}
+.agent-status.thinking{background:var(--yellow-glow);color:var(--yellow)}
+.agent-status.idle{background:rgba(100,100,140,.2);color:var(--text-dim)}
+.agent-status.error{background:var(--red-glow);color:var(--red)}
+.agent-progress{
+  flex:1;height:4px;background:var(--bg-secondary);border-radius:2px;overflow:hidden;
+}
+.agent-progress-bar{height:100%;border-radius:2px;transition:.5s;
+  background:linear-gradient(90deg,var(--accent),var(--blue))}
+.agent-time{font-size:9px;color:var(--text-dim);font-family:var(--mono)}
+
+/* --- Notifications Panel --- */
+.notif-panel{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);max-height:200px;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.notif-list{flex:1;overflow-y:auto;padding:6px 8px}
+.notif-item{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:8px;border-radius:var(--radius-sm);
+  font-size:11px;transition:.15s;
+}
+.notif-item:hover{background:var(--bg-card-hover)}
+.notif-dot{
+  width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;
+}
+.notif-dot.info{background:var(--blue)}
+.notif-dot.success{background:var(--green)}
+.notif-dot.warn{background:var(--yellow)}
+.notif-dot.error{background:var(--red)}
+.notif-text{flex:1;color:var(--text-secondary);line-height:1.4}
+.notif-text strong{color:var(--text-primary)}
+.notif-time{font-size:9px;color:var(--text-dim);flex-shrink:0;font-family:var(--mono)}
+
+/* --- Quick Commands Panel --- */
+.quick-panel{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);padding:12px;flex-shrink:0;
+}
+.quick-title{font-size:11px;font-weight:700;margin-bottom:8px;
+  color:var(--text-secondary);text-transform:uppercase;letter-spacing:.5px}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.quick-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 10px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--bg-secondary);
+  color:var(--text-secondary);font-size:11px;font-weight:600;
+  cursor:pointer;transition:.2s;font-family:var(--font);
+}
+.quick-btn:hover{border-color:var(--accent);color:var(--accent);
+  background:var(--accent-glow);transform:translateY(-1px)}
+.quick-btn svg{width:14px;height:14px;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   DOCUMENT PREVIEW MODAL
+   ═══════════════════════════════════════════════ */
+.doc-preview-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);z-index:500;
+  display:none;align-items:center;justify-content:center;
+}
+.doc-preview-overlay.show{display:flex}
+.doc-preview{
+  width:70vw;max-width:800px;max-height:80vh;
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);display:flex;flex-direction:column;
+  overflow:hidden;animation:modal-in .3s ease;
+}
+@keyframes modal-in{from{opacity:0;transform:scale(.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.doc-preview-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid var(--border);
+}
+.doc-preview-title{font-size:14px;font-weight:700}
+.doc-preview-close{
+  width:30px;height:30px;border-radius:8px;border:none;
+  background:var(--bg-secondary);color:var(--text-secondary);
+  cursor:pointer;font-size:16px;transition:.2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.doc-preview-close:hover{background:var(--red);color:#fff}
+.doc-preview-body{
+  flex:1;overflow-y:auto;padding:20px;
+  font-size:13px;line-height:1.7;color:var(--text-secondary);
+}
+.doc-preview-body h1,.doc-preview-body h2,.doc-preview-body h3{
+  color:var(--text-primary);margin:16px 0 8px;
+}
+.doc-preview-body h1{font-size:20px}
+.doc-preview-body h2{font-size:16px}
+.doc-preview-body h3{font-size:14px}
+.doc-preview-body p{margin-bottom:10px}
+.doc-preview-body ul,.doc-preview-body ol{margin:8px 0 8px 20px}
+.doc-preview-body li{margin-bottom:4px}
+.doc-preview-body code{
+  background:var(--bg-secondary);padding:1px 6px;border-radius:4px;
+  font-family:var(--mono);font-size:12px;
+}
+.doc-preview-body table{width:100%;border-collapse:collapse;margin:10px 0}
+.doc-preview-body th,.doc-preview-body td{
+  padding:8px 10px;border:1px solid var(--border);font-size:12px;text-align:left;
+}
+.doc-preview-body th{background:var(--bg-secondary);font-weight:700;color:var(--text-primary)}
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS & UTILITY
+   ═══════════════════════════════════════════════ */
+.fade-in{animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.slide-up{animation:slideUp .4s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* Glow effects */
+.glow-accent{box-shadow:0 0 20px var(--accent-glow)}
+.glow-green{box-shadow:0 0 20px var(--green-glow)}
+
+/* Responsive */
+@media(max-width:1200px){
+  .main{grid-template-columns:240px 1fr 280px}
+}
+@media(max-width:900px){
+  .main{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .left-col,.right-col{grid-row:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" class="claw" opacity=".3"/>
+          <path d="M10 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="claw"/>
+          <circle cx="12" cy="13" r="2" fill="currentColor" class="bot"/>
+          <circle cx="20" cy="13" r="2" fill="currentColor" class="bot"/>
+          <path d="M8 8l4 4M24 8l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="claw"/>
+        </svg>
+        <span><span class="claw">Claw</span><span class="bot">Bot</span></span>
+      </div>
+      <div class="header-status">
+        <span class="status-dot"></span>
+        System Online
+      </div>
+    </div>
+    <div class="header-center">
+      <div class="header-tab active" data-view="dashboard">Dashboard</div>
+      <div class="header-tab" data-view="trading">Trading</div>
+      <div class="header-tab" data-view="projects">Projekter</div>
+      <div class="header-tab" data-view="agents">Agenter</div>
+    </div>
+    <div class="header-right">
+      <div class="header-time" id="headerTime">--:--:--</div>
+      <div class="header-user">
+        <div class="user-avatar">M</div>
+        Mujaffa
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN GRID ═══ -->
+  <div class="main">
+
+    <!-- ═══ LEFT COLUMN ═══ -->
+    <div class="left-col">
+      <!-- Bot Face -->
+      <div class="bot-face-card">
+        <div class="bot-face-wrapper">
+          <div class="bot-face-ring"></div>
+          <div class="bot-face" id="botFace">
+            <div class="bot-eye left"><div class="pupil"></div></div>
+            <div class="bot-eye right"><div class="pupil"></div></div>
+            <div class="bot-mouth" id="botMouth"></div>
+            <div class="bot-thinking-dots" id="botThinking">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="bot-status">
+          <div class="bot-status-label" id="botStatusLabel">Online</div>
+          <div class="bot-status-task" id="botStatusTask">Venter på kommandoer...</div>
+        </div>
+        <div class="bot-mood">
+          <div class="mood-btn active" data-mood="idle">Idle</div>
+          <div class="mood-btn" data-mood="thinking">Tænker</div>
+          <div class="mood-btn" data-mood="working">Arbejder</div>
+          <div class="mood-btn" data-mood="happy">Glad</div>
+        </div>
+      </div>
+
+      <!-- Documents -->
+      <div class="documents-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            Dokumenter
+          </div>
+          <span class="panel-badge" id="docCount">10</span>
+        </div>
+        <div class="panel-search">
+          <input type="text" placeholder="Sog i filer..." id="docSearch"/>
+        </div>
+        <div class="doc-list" id="docList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CENTER COLUMN ═══ -->
+    <div class="center-col">
+      <!-- Trading -->
+      <div class="trading-panel">
+        <div class="trading-header">
+          <div class="trading-pair">
+            <div class="trading-pair-name">BTC/USDT</div>
+            <div class="trading-pair-price" id="tradePrice">$97,432.50</div>
+            <div class="trading-pair-change up" id="tradeChange">+2.34%</div>
+          </div>
+          <div class="trading-controls">
+            <div class="trading-tf" data-tf="1m">1m</div>
+            <div class="trading-tf" data-tf="5m">5m</div>
+            <div class="trading-tf active" data-tf="15m">15m</div>
+            <div class="trading-tf" data-tf="1h">1H</div>
+            <div class="trading-tf" data-tf="4h">4H</div>
+            <div class="trading-tf" data-tf="1d">1D</div>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="tradingChart"></canvas>
+        </div>
+        <div class="trading-stats">
+          <div class="stat-item">
+            <div class="stat-label">P&L i dag</div>
+            <div class="stat-value green" id="statPnl">+$1,247</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Win Rate</div>
+            <div class="stat-value blue" id="statWin">68.5%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Positioner</div>
+            <div class="stat-value" id="statPos">3</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Bot Status</div>
+            <div class="stat-value green" id="statBot">AKTIV</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat -->
+      <div class="chat-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Chat med ClawBot
+          </div>
+          <span class="panel-badge">Live</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-msg bot">
+            <div class="msg-name">ClawBot</div>
+            Hej Mujaffa! Jeg er klar til at hjaelpe. Hvad skal vi arbejde pa i dag?
+          </div>
+          <div class="chat-msg bot">
+            <div class="msg-name">ClawBot</div>
+            Tip: Brug @projekt for at vaelge kontekst. F.eks. <strong>@trading status</strong> eller <strong>@seo rapport</strong>
+          </div>
+        </div>
+        <div class="chat-typing" id="chatTyping">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="chat-input-area">
+          <input type="text" class="chat-input" id="chatInput" placeholder="Skriv en kommando... (@trading, @seo, @mlflyt)" />
+          <button class="chat-send" id="chatSend">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT COLUMN ═══ -->
+    <div class="right-col">
+      <!-- Agents -->
+      <div class="agents-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Aktive Agenter
+          </div>
+          <span class="panel-badge" id="agentCount">5</span>
+        </div>
+        <div class="agent-list" id="agentList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="notif-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            Notifikationer
+          </div>
+        </div>
+        <div class="notif-list" id="notifList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Quick Commands -->
+      <div class="quick-panel">
+        <div class="quick-title">Hurtige Kommandoer</div>
+        <div class="quick-grid">
+          <button class="quick-btn" data-cmd="@trading status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Trading Status
+          </button>
+          <button class="quick-btn" data-cmd="@seo rapport">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            SEO Rapport
+          </button>
+          <button class="quick-btn" data-cmd="@mlflyt tilbud">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Nyt Tilbud
+          </button>
+          <button class="quick-btn" data-cmd="dagens overblik">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            Overblik
+          </button>
+          <button class="quick-btn" data-cmd="@trading kor bot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Start Bot
+          </button>
+          <button class="quick-btn" data-cmd="@seo geo-script 10">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            GEO Sider
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ DOCUMENT PREVIEW MODAL ═══ -->
+<div class="doc-preview-overlay" id="docPreview">
+  <div class="doc-preview">
+    <div class="doc-preview-header">
+      <div class="doc-preview-title" id="previewTitle">Dokument</div>
+      <button class="doc-preview-close" id="previewClose">&times;</button>
+    </div>
+    <div class="doc-preview-body" id="previewBody"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   CLAWBOT COMMAND CENTER - JAVASCRIPT ENGINE
+   ═══════════════════════════════════════════════ */
+
+// ── Clock ──
+function updateClock(){
+  const now=new Date();
+  const t=now.toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('headerTime').textContent=t;
+}
+setInterval(updateClock,1000);updateClock();
+
+// ── Documents Data ──
+const documents=[
+  {folder:'MLflyt',icon:'truck',items:[
+    {name:'GEO: Skanderborg',file:'flyttefirma-skanderborg.html',tag:'html',
+     preview:'<h1>Flyttefirma Skanderborg</h1><p>GEO-optimeret landingsside for Skanderborg-omraadet. Inkluderer lokale sogeord, priser fra 2.500 kr, FAQ og Schema.org markup.</p><h2>Nogletal</h2><ul><li>Target keyword: flyttefirma skanderborg</li><li>Pris range: 2.500 - 8.500 kr</li><li>Schema: MovingCompany</li><li>Trust: 32+ aars erfaring, 10.000+ flytninger</li></ul>'},
+    {name:'GEO: Randers',file:'flyttefirma-randers.html',tag:'html',
+     preview:'<h1>Flyttefirma Randers</h1><p>GEO-optimeret landingsside for Randers. Daekker Randers C, Dronningborg, Vorup mv.</p><h2>Nogletal</h2><ul><li>Target keyword: flyttefirma randers</li><li>Prisrange: 2.500 - 8.500 kr</li><li>Lokale omraader listet</li></ul>'},
+    {name:'Brev til Advokat',file:'Brev_til_Advokat.html',tag:'html',
+     preview:'<h1>Brev til Advokat</h1><p>Formel dokumentation vedrorende kontraktbrud fra SEO-bureau. 10 maaneders kontrakt med manglende leverancer.</p><h2>Hovedpunkter</h2><ul><li>Kontraktsum: 40.000 kr/aar</li><li>Betalt: ~33.333 kr for 10 maaneder</li><li>Stavefejl "Aahrus" stadig ikke rettet</li><li>Ingen nye GEO-sider oprettet</li></ul>'},
+    {name:'Advokat Dokumentation',file:'Dokumentation_Advokat.html',tag:'html',
+     preview:'<h1>Detaljeret Dokumentation</h1><p>Fuld teknisk dokumentation til advokat. Indeholder skemaer, beviser og anbefalinger.</p>'},
+  ]},
+  {folder:'SEO Rapporter',icon:'chart',items:[
+    {name:'SEO Rapport 30/01',file:'SEO_RAPPORT_30-01-2026.md',tag:'md',
+     preview:'<h1>SEO Rapport - 30. Januar 2026</h1><p>Komplet SEO-analyse af mlflyt.dk</p><h2>Status</h2><ul><li>Kritiske fejl fundet i title tags</li><li>Manglende meta descriptions</li><li>Schema.org markup skal implementeres</li><li>Forventet: +30-50% organisk trafik paa 3 maaneder</li></ul>'},
+    {name:'SEO Fixes',file:'SEO_FIXES.md',tag:'md',
+     preview:'<h1>Kritiske SEO Rettelser</h1><p>Prioriteret liste over noedvendige rettelser.</p><h2>Top Prioritet</h2><ul><li>Title tag optimering</li><li>Meta descriptions</li><li>H1 overskrifter</li><li>Lokale landingssider</li><li>Schema.org markup</li></ul>'},
+    {name:'Handlingsplan',file:'HANDLINGSPLAN.md',tag:'md',
+     preview:'<h1>6-Faset Handlingsplan</h1><ul><li>Fase 1: Fix kritiske fejl (uge 1)</li><li>Fase 2: Teknisk SEO (uge 1-2)</li><li>Fase 3: GEO-sider (uge 2-3)</li><li>Fase 4: Google My Business (uge 2)</li><li>Fase 5: Content marketing (uge 3-4)</li><li>Fase 6: Linkbuilding (lopende)</li></ul>'},
+    {name:'Konkurrenceanalyse',file:'KONKURRENCEANALYSE.md',tag:'md',
+     preview:'<h1>Konkurrenceanalyse</h1><p>Analyse af 5 konkurrenter i Aarhus-omraadet.</p><h2>Konkurrenter</h2><ul><li>Jysk Flyttefirma</li><li>Aarhus Flytteservice</li><li>Flyttebanden</li><li>AKL Flyt</li></ul><p><strong>Konklusion:</strong> MLflyt har unik giraffe-branding men taber pga. stavefejl og manglende content.</p>'},
+    {name:'Bureau Analyse',file:'BUREAU_ANALYSE.md',tag:'md',
+     preview:'<h1>SEO Bureau Performance Review</h1><p>10-maaneders kontraktbrud-sag.</p><h2>Kritiske Fund</h2><ul><li>"Aahrus" stavefejl stadig aktiv</li><li>Ingen nye GEO-sider</li><li>Ingen blogindlaeg i 10 maaneder</li><li>Estimeret tab: ~265.000 kr i omsaetning</li></ul>'},
+  ]},
+  {folder:'Trading',icon:'trade',items:[
+    {name:'Bot Konfiguration',file:'bot-config.json',tag:'json',
+     preview:'<h1>Trading Bot Konfiguration</h1><p>Aktuel bot-opsaetning:</p><table><tr><th>Parameter</th><th>Vaerdi</th></tr><tr><td>Strategi</td><td>Mean Reversion + Momentum</td></tr><tr><td>Max Position</td><td>$5,000</td></tr><tr><td>Stop Loss</td><td>2.5%</td></tr><tr><td>Take Profit</td><td>4.8%</td></tr><tr><td>Timeframe</td><td>15m</td></tr><tr><td>Pairs</td><td>BTC/USDT, ETH/USDT, SOL/USDT</td></tr></table>'},
+    {name:'Daglig Rapport',file:'daily-report.md',tag:'md',
+     preview:'<h1>Trading Rapport - I dag</h1><table><tr><th>Metrik</th><th>Vaerdi</th></tr><tr><td>Trades</td><td>23</td></tr><tr><td>Win Rate</td><td>68.5%</td></tr><tr><td>P&L</td><td>+$1,247.30</td></tr><tr><td>Stoerste Win</td><td>+$412.50</td></tr><tr><td>Stoerste Loss</td><td>-$187.20</td></tr></table>'},
+  ]},
+];
+
+// ── Render Documents ──
+function renderDocs(filter=''){
+  const list=document.getElementById('docList');
+  let count=0;
+  let html='';
+  documents.forEach(folder=>{
+    const items=folder.items.filter(i=>!filter||i.name.toLowerCase().includes(filter.toLowerCase()));
+    if(!items.length)return;
+    count+=items.length;
+    html+=`<div class="doc-folder">
+      <div class="doc-folder-name open" onclick="toggleFolder(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        ${folder.folder}
+      </div>
+      <div class="doc-folder-items open">
+        ${items.map(item=>`
+          <div class="doc-item" onclick="openDoc(this,'${item.name}',\`${item.preview.replace(/`/g,"'")}\`)">
+            <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ${item.name}
+            <span class="doc-tag tag-${item.tag}">${item.tag.toUpperCase()}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  });
+  list.innerHTML=html;
+  document.getElementById('docCount').textContent=count;
+}
+renderDocs();
+
+document.getElementById('docSearch').addEventListener('input',e=>renderDocs(e.target.value));
+
+function toggleFolder(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+function openDoc(el,title,content){
+  document.querySelectorAll('.doc-item').forEach(d=>d.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('previewTitle').textContent=title;
+  document.getElementById('previewBody').innerHTML=content;
+  document.getElementById('docPreview').classList.add('show');
+}
+document.getElementById('previewClose').onclick=()=>document.getElementById('docPreview').classList.remove('show');
+document.getElementById('docPreview').onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('show')};
+
+// ── Agents Data ──
+const agents=[
+  {name:'SEO Agent',task:'Analyserer mlflyt.dk ranking for "flyttefirma aarhus"',icon:'seo',emoji:'🔍',status:'active',progress:78,time:'2m siden'},
+  {name:'Trading Bot',task:'Overvaager BTC/USDT - Mean Reversion strategi aktiv',icon:'trade',emoji:'📈',status:'active',progress:100,time:'Live'},
+  {name:'MLflyt Agent',task:'Genererer tilbud til ny kunde i Skanderborg',icon:'move',emoji:'🚛',status:'thinking',progress:45,time:'30s siden'},
+  {name:'Sacred Shop Agent',task:'Idle - venter paa opgaver',icon:'shop',emoji:'🛍️',status:'idle',progress:0,time:'1t siden'},
+  {name:'Monitor Agent',task:'Scanning website uptime og performance metrics',icon:'scan',emoji:'🛡️',status:'active',progress:92,time:'Live'},
+];
+
+function renderAgents(){
+  const list=document.getElementById('agentList');
+  list.innerHTML=agents.map(a=>`
+    <div class="agent-item slide-up">
+      <div class="agent-icon ${a.icon}">${a.emoji}</div>
+      <div class="agent-info">
+        <div class="agent-name">${a.name}</div>
+        <div class="agent-task">${a.task}</div>
+        <div class="agent-meta">
+          <span class="agent-status ${a.status}">${a.status==='active'?'Aktiv':a.status==='thinking'?'Taenker':a.status==='error'?'Fejl':'Idle'}</span>
+          <div class="agent-progress"><div class="agent-progress-bar" style="width:${a.progress}%"></div></div>
+          <span class="agent-time">${a.time}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('agentCount').textContent=agents.filter(a=>a.status!=='idle').length;
+}
+renderAgents();
+
+// ── Notifications ──
+const notifications=[
+  {type:'success',text:'<strong>Trading Bot:</strong> BTC/USDT long lukket med +$412.50 profit',time:'2m'},
+  {type:'info',text:'<strong>SEO Agent:</strong> Ny ranking data hentet for 15 keywords',time:'5m'},
+  {type:'warn',text:'<strong>MLflyt:</strong> Ny foresporgsel fra kunde i Randers',time:'12m'},
+  {type:'success',text:'<strong>GEO Sider:</strong> flyttefirma-skanderborg.html deployed',time:'25m'},
+  {type:'info',text:'<strong>Monitor:</strong> Alle systemer korer normalt',time:'30m'},
+  {type:'error',text:'<strong>Sacred Shop:</strong> API timeout - retrying...',time:'45m'},
+  {type:'success',text:'<strong>Trading Bot:</strong> Daglig rapport genereret - P&L: +$1,247',time:'1t'},
+];
+
+function renderNotifs(){
+  document.getElementById('notifList').innerHTML=notifications.map(n=>`
+    <div class="notif-item">
+      <span class="notif-dot ${n.type}"></span>
+      <span class="notif-text">${n.text}</span>
+      <span class="notif-time">${n.time}</span>
+    </div>
+  `).join('');
+}
+renderNotifs();
+
+// ── Bot Face Animation ──
+let botState='idle';
+function setBotMood(mood){
+  botState=mood;
+  const mouth=document.getElementById('botMouth');
+  const thinking=document.getElementById('botThinking');
+  const label=document.getElementById('botStatusLabel');
+  const task=document.getElementById('botStatusTask');
+  const eyes=document.querySelectorAll('.bot-eye');
+  const ring=document.querySelector('.bot-face-ring');
+
+  mouth.className='bot-mouth';
+  thinking.classList.remove('show');
+  eyes.forEach(e=>e.classList.remove('blink'));
+
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.mood-btn[data-mood="${mood}"]`)?.classList.add('active');
+
+  switch(mood){
+    case'idle':
+      label.textContent='Online';label.style.color='var(--green)';
+      task.textContent='Venter paa kommandoer...';
+      ring.style.borderColor='var(--accent)';
+      break;
+    case'thinking':
+      mouth.style.display='none';thinking.classList.add('show');
+      label.textContent='Taenker...';label.style.color='var(--yellow)';
+      task.textContent='Processerer data...';
+      ring.style.borderColor='var(--yellow)';
+      break;
+    case'working':
+      mouth.classList.add('talking');
+      label.textContent='Arbejder';label.style.color='var(--blue)';
+      task.textContent='Udforer opgave...';
+      ring.style.borderColor='var(--blue)';
+      break;
+    case'happy':
+      mouth.classList.add('happy');
+      label.textContent='Faerdig!';label.style.color='var(--green)';
+      task.textContent='Opgave gennemfort!';
+      ring.style.borderColor='var(--green)';
+      break;
+  }
+}
+
+document.querySelectorAll('.mood-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>setBotMood(btn.dataset.mood));
+});
+
+// Blink animation
+setInterval(()=>{
+  if(Math.random()>.7){
+    const eyes=document.querySelectorAll('.bot-eye');
+    eyes.forEach(e=>e.classList.add('blink'));
+    setTimeout(()=>eyes.forEach(e=>e.classList.remove('blink')),150);
+  }
+},3000);
+
+// Pupil follow mouse
+document.addEventListener('mousemove',e=>{
+  const face=document.getElementById('botFace');
+  if(!face)return;
+  const rect=face.getBoundingClientRect();
+  const cx=rect.left+rect.width/2;
+  const cy=rect.top+rect.height/2;
+  const dx=(e.clientX-cx)/window.innerWidth*6;
+  const dy=(e.clientY-cy)/window.innerHeight*6;
+  document.querySelectorAll('.pupil').forEach(p=>{
+    p.style.transform=`translate(${dx}px,${dy}px)`;
+  });
+});
+
+// ── Chat System ──
+const chatResponses={
+  '@trading status':'Trading Bot er AKTIV. 3 aabne positioner:\n- BTC/USDT Long: +2.1%\n- ETH/USDT Long: +0.8%\n- SOL/USDT Short: -0.3%\n\nDagens P&L: +$1,247.30 | Win Rate: 68.5%',
+  '@trading kor bot':'Trading Bot starter... Indlaeser strategi: Mean Reversion + Momentum.\nScanner markeder... Bot er nu AKTIV paa BTC/USDT, ETH/USDT, SOL/USDT.',
+  '@seo rapport':'SEO Rapport for mlflyt.dk:\n- "flyttefirma aarhus": Position #8 (op fra #12)\n- "flyttefirma skanderborg": Position #5\n- "flyttefirma randers": Position #7\n- Organisk trafik: +23% denne maaned\n\nAnbefaling: Opret 3 nye GEO-sider.',
+  '@seo geo-script 10':'Starter GEO-script... Genererer 10 lokale landingssider:\n1. flyttefirma-silkeborg.html\n2. flyttefirma-horsens.html\n3. flyttefirma-viborg.html\n... (7 mere)\n\nAlle sider optimeret med Schema.org og lokale keywords.',
+  '@mlflyt tilbud':'Opretter nyt tilbud-skabelon. Hvilken kunde? Send mig:\n- Kundenavn\n- Fra-adresse\n- Til-adresse\n- Antal m2\n- Oensket dato',
+  'dagens overblik':'DAGENS OVERBLIK:\n\n📈 Trading: +$1,247 | 3 aktive positioner\n🔍 SEO: 15 keywords tracket, +23% trafik\n🚛 MLflyt: 2 nye kundeforespørgsler\n🛍️ Sacred Shop: Idle\n🛡️ Monitor: Alle systemer OK\n\n5 agenter aktive, 0 fejl.',
+  'default':'Forstaaet! Jeg arbejder paa det. Brug @projekt for at specificere kontekst:\n- @trading [kommando]\n- @seo [kommando]\n- @mlflyt [kommando]\n- @sacred [kommando]',
+};
+
+function addChatMsg(text,isUser=false){
+  const msgs=document.getElementById('chatMessages');
+  const div=document.createElement('div');
+  div.className=`chat-msg ${isUser?'user':'bot'}`;
+  if(!isUser)div.innerHTML=`<div class="msg-name">ClawBot</div>${text.replace(/\n/g,'<br>')}`;
+  else div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function handleChat(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  input.value='';
+  addChatMsg(text,true);
+
+  // Bot thinking
+  setBotMood('thinking');
+  document.getElementById('chatTyping').classList.add('show');
+
+  setTimeout(()=>{
+    document.getElementById('chatTyping').classList.remove('show');
+    setBotMood('working');
+    const key=Object.keys(chatResponses).find(k=>text.toLowerCase().includes(k))||'default';
+    addChatMsg(chatResponses[key]);
+    setTimeout(()=>setBotMood('happy'),1500);
+    setTimeout(()=>setBotMood('idle'),4000);
+  },1200+Math.random()*800);
+}
+
+document.getElementById('chatSend').onclick=handleChat;
+document.getElementById('chatInput').onkeydown=e=>{if(e.key==='Enter')handleChat()};
+
+// Quick commands
+document.querySelectorAll('.quick-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.getElementById('chatInput').value=btn.dataset.cmd;
+    handleChat();
+  });
+});
+
+// ── Header Tabs ──
+document.querySelectorAll('.header-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.header-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// ── Trading Timeframes ──
+document.querySelectorAll('.trading-tf').forEach(tf=>{
+  tf.addEventListener('click',()=>{
+    document.querySelectorAll('.trading-tf').forEach(t=>t.classList.remove('active'));
+    tf.classList.add('active');
+    drawChart(); // Redraw with different data
+  });
+});
+
+// ═══════════════════════════════════════════════
+// TRADING CHART - Canvas Candlestick
+// ═══════════════════════════════════════════════
+function generateCandleData(count=60){
+  const data=[];
+  let price=97000+Math.random()*1000;
+  for(let i=0;i<count;i++){
+    const open=price;
+    const change=(Math.random()-.48)*400;
+    const close=open+change;
+    const high=Math.max(open,close)+Math.random()*200;
+    const low=Math.min(open,close)-Math.random()*200;
+    const vol=Math.random()*100+20;
+    data.push({open,close,high,low,vol,time:i});
+    price=close;
+  }
+  return data;
+}
+
+let candleData=generateCandleData();
+
+function drawChart(){
+  const canvas=document.getElementById('tradingChart');
+  const ctx=canvas.getContext('2d');
+  const rect=canvas.parentElement.getBoundingClientRect();
+  canvas.width=rect.width*2;
+  canvas.height=rect.height*2;
+  canvas.style.width=rect.width+'px';
+  canvas.style.height=rect.height+'px';
+  ctx.scale(2,2);
+
+  const w=rect.width;
+  const h=rect.height;
+  const data=candleData;
+  const pad={top:10,right:60,bottom:30,left:10};
+  const chartW=w-pad.left-pad.right;
+  const chartH=h-pad.top-pad.bottom;
+
+  // Clear
+  ctx.clearRect(0,0,w,h);
+
+  // Find range
+  let minP=Infinity,maxP=-Infinity,maxV=0;
+  data.forEach(d=>{
+    minP=Math.min(minP,d.low);
+    maxP=Math.max(maxP,d.high);
+    maxV=Math.max(maxV,d.vol);
+  });
+  const priceRange=maxP-minP;
+  minP-=priceRange*.05;
+  maxP+=priceRange*.05;
+
+  const candleW=chartW/data.length;
+  const bodyW=Math.max(candleW*.6,2);
+
+  function priceToY(p){return pad.top+chartH*(1-(p-minP)/(maxP-minP))}
+  function volToH(v){return(v/maxV)*chartH*.2}
+
+  // Grid lines
+  ctx.strokeStyle='rgba(42,49,84,.5)';
+  ctx.lineWidth=.5;
+  const gridLines=5;
+  for(let i=0;i<=gridLines;i++){
+    const y=pad.top+(chartH/gridLines)*i;
+    ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();
+    const pLabel=(maxP-(maxP-minP)/gridLines*i).toFixed(0);
+    ctx.fillStyle='#5a5a7a';ctx.font='10px monospace';ctx.textAlign='left';
+    ctx.fillText('$'+pLabel,w-pad.right+4,y+3);
+  }
+
+  // Volume bars
+  data.forEach((d,i)=>{
+    const x=pad.left+i*candleW+candleW/2;
+    const vH=volToH(d.vol);
+    const isGreen=d.close>=d.open;
+    ctx.fillStyle=isGreen?'rgba(0,230,118,.15)':'rgba(255,82,82,.15)';
+    ctx.fillRect(x-bodyW/2,pad.top+chartH-vH,bodyW,vH);
+  });
+
+  // Candles
+  data.forEach((d,i)=>{
+    const x=pad.left+i*candleW+candleW/2;
+    const isGreen=d.close>=d.open;
+    const color=isGreen?'#00e676':'#ff5252';
+
+    // Wick
+    ctx.strokeStyle=color;ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(x,priceToY(d.high));
+    ctx.lineTo(x,priceToY(d.low));
+    ctx.stroke();
+
+    // Body
+    const yOpen=priceToY(d.open);
+    const yClose=priceToY(d.close);
+    const bodyH=Math.max(Math.abs(yClose-yOpen),1);
+    ctx.fillStyle=color;
+    ctx.fillRect(x-bodyW/2,Math.min(yOpen,yClose),bodyW,bodyH);
+  });
+
+  // Current price line
+  const lastCandle=data[data.length-1];
+  const lastY=priceToY(lastCandle.close);
+  ctx.strokeStyle=lastCandle.close>=lastCandle.open?'#00e676':'#ff5252';
+  ctx.lineWidth=1;
+  ctx.setLineDash([4,4]);
+  ctx.beginPath();ctx.moveTo(pad.left,lastY);ctx.lineTo(w-pad.right,lastY);ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Price label
+  ctx.fillStyle=lastCandle.close>=lastCandle.open?'#00e676':'#ff5252';
+  ctx.fillRect(w-pad.right,lastY-8,55,16);
+  ctx.fillStyle='#0a0e1a';ctx.font='bold 9px monospace';ctx.textAlign='left';
+  ctx.fillText('$'+lastCandle.close.toFixed(0),w-pad.right+3,lastY+3);
+
+  // Update price display
+  document.getElementById('tradePrice').textContent='$'+lastCandle.close.toFixed(2);
+}
+
+// Draw on load and resize
+setTimeout(drawChart,100);
+window.addEventListener('resize',drawChart);
+
+// Simulate live candle updates
+setInterval(()=>{
+  const last=candleData[candleData.length-1];
+  const tick=(Math.random()-.48)*80;
+  last.close+=tick;
+  last.high=Math.max(last.high,last.close);
+  last.low=Math.min(last.low,last.close);
+  drawChart();
+
+  // Update price change
+  const first=candleData[0].open;
+  const pct=((last.close-first)/first*100).toFixed(2);
+  const el=document.getElementById('tradeChange');
+  el.textContent=(pct>=0?'+':'')+pct+'%';
+  el.className='trading-pair-change '+(pct>=0?'up':'down');
+},2000);
+
+// New candle every 30s
+setInterval(()=>{
+  const last=candleData[candleData.length-1];
+  const newCandle={
+    open:last.close,
+    close:last.close+(Math.random()-.48)*300,
+    high:0,low:0,
+    vol:Math.random()*100+20,
+    time:last.time+1
+  };
+  newCandle.high=Math.max(newCandle.open,newCandle.close)+Math.random()*150;
+  newCandle.low=Math.min(newCandle.open,newCandle.close)-Math.random()*150;
+  candleData.push(newCandle);
+  if(candleData.length>80)candleData.shift();
+  drawChart();
+},30000);
+
+// ── Simulate Agent Activity ──
+setInterval(()=>{
+  const idx=Math.floor(Math.random()*agents.length);
+  const tasks=[
+    'Analyserer sogeresultater...','Opdaterer keyword rankings...',
+    'Scanner nye muligheder...','Genererer rapport...',
+    'Optimerer content...','Overvaager priser...',
+    'Beregner strategi...','Tjekker konkurrenter...',
+    'Processerer data...','Deployer aendringer...'
+  ];
+  if(agents[idx].status!=='idle'){
+    agents[idx].progress=Math.min(100,agents[idx].progress+Math.floor(Math.random()*15));
+    if(agents[idx].progress>=100){
+      agents[idx].progress=Math.floor(Math.random()*30)+10;
+      agents[idx].task=tasks[Math.floor(Math.random()*tasks.length)];
+    }
+    agents[idx].time='Nu';
+  }
+  renderAgents();
+},5000);
+
+// ── Simulate P&L updates ──
+let pnl=1247;
+setInterval(()=>{
+  pnl+=(Math.random()-.45)*50;
+  const el=document.getElementById('statPnl');
+  el.textContent=(pnl>=0?'+':'')+' $'+Math.abs(pnl).toFixed(0);
+  el.className='stat-value '+(pnl>=0?'green':'red');
+},8000);
+
+// ── Simulate new notifications ──
+const notifTemplates=[
+  {type:'success',text:'<strong>Trading Bot:</strong> Position lukket med profit'},
+  {type:'info',text:'<strong>SEO Agent:</strong> Keyword ranking opdateret'},
+  {type:'warn',text:'<strong>MLflyt:</strong> Ny foresporgsel modtaget'},
+  {type:'success',text:'<strong>Monitor:</strong> Health check OK'},
+];
+setInterval(()=>{
+  const tmpl=notifTemplates[Math.floor(Math.random()*notifTemplates.length)];
+  notifications.unshift({...tmpl,time:'Nu'});
+  if(notifications.length>10)notifications.pop();
+  renderNotifs();
+},25000);
+
+<script src="live-data.js"></script>
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "project": "Sacred Pet",
+  "last_updated": "2026-02-02T23:03:24.925280",
+  "landing_page": "100%",
+  "status": "klar_til_deploy",
+  "filer": [
+    "index.html",
+    "SUPER-AGENT.md",
+    "tak.html"
+  ],
+  "storrelse_kb": 66,
+  "mangler": [
+    "Analytics ID (Plausible)",
+    "Analytics ID (Clarity)",
+    "Formspree ID",
+    "Dom\u00e6ne (sacredpet.dk)"
+  ],
+  "seneste_aktivitet": "Full-width sektioner rettet"
+}

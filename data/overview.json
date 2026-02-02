@@ -1,0 +1,68 @@
+{
+  "last_updated": "2026-02-02T23:03:24.926178",
+  "projects": {
+    "mlflyt": {
+      "project": "MLflyt",
+      "last_updated": "2026-02-02T23:03:24.924976",
+      "geo_sider": {
+        "total": 100,
+        "faerdige": 0,
+        "procent": 0.0,
+        "liste": []
+      },
+      "nye_leads": 3,
+      "seo_ranking": {
+        "flyttefirma_aarhus": 8,
+        "flyttefirma_skanderborg": 5,
+        "flyttefirma_randers": 7
+      },
+      "status": "aktiv",
+      "seneste_aktivitet": "0 GEO sider genereret"
+    },
+    "sacred": {
+      "project": "Sacred Pet",
+      "last_updated": "2026-02-02T23:03:24.925280",
+      "landing_page": "100%",
+      "status": "klar_til_deploy",
+      "filer": [
+        "index.html",
+        "SUPER-AGENT.md",
+        "tak.html"
+      ],
+      "storrelse_kb": 66,
+      "mangler": [
+        "Analytics ID (Plausible)",
+        "Analytics ID (Clarity)",
+        "Formspree ID",
+        "Dom\u00e6ne (sacredpet.dk)"
+      ],
+      "seneste_aktivitet": "Full-width sektioner rettet"
+    },
+    "trading": {
+      "project": "Trading Bot",
+      "last_updated": "2026-02-02T23:03:24.925652",
+      "mode": "READ_ONLY",
+      "warning": "\ud83d\udd12 Jeg kan KUN l\u00e6se, ikke r\u00f8re!",
+      "kapital": 297.95,
+      "exchange": "bybit",
+      "paper_trading": false,
+      "aabne_positioner": 2,
+      "positioner": [
+        {
+          "symbol": "BTCUSDT",
+          "direction": "SHORT",
+          "entry": "$79,559.40",
+          "status": "OPEN"
+        },
+        {
+          "symbol": "ETHUSDT",
+          "direction": "SHORT",
+          "entry": "$2,397.11",
+          "status": "OPEN"
+        }
+      ],
+      "dagens_pnl": "+$1,247",
+      "win_rate": "68.5%"
+    }
+  }
+}
