@@ -1,10 +1,11 @@
-
 // ═══════════════════════════════════════════════
 // LIVE DATA FETCH - Henter fra JSON filer
 // ═══════════════════════════════════════════════
 
 let liveData = {};
+let docLibrary = {};
 
+// ── Hent projekt data ──
 async function fetchLiveData() {
   try {
     const response = await fetch('data/overview.json');
@@ -16,54 +17,146 @@ async function fetchLiveData() {
   }
 }
 
-function updateUIWithLiveData() {
-  if (!liveData.projects) return;
-  
-  // Update MLflyt stats
-  if (liveData.projects.mlflyt) {
-    const mlflyt = liveData.projects.mlflyt;
-    console.log('🚛 MLflyt:', mlflyt.geo_sider.faerdige, '/', mlflyt.geo_sider.total);
-  }
-  
-  // Update Sacred Pet stats  
-  if (liveData.projects.sacred) {
-    const sacred = liveData.projects.sacred;
-    console.log('🌿 Sacred:', sacred.status);
-  }
-  
-  // Update Trading stats (READ-ONLY!)
-  if (liveData.projects.trading) {
-    const trading = liveData.projects.trading;
-    console.log('📈 Trading:', trading.aabne_positioner, 'positioner');
-    console.log('🔒', trading.warning);
-    
-    // Update trading panel with real data
-    const statPnl = document.getElementById('statPnl');
-    if (statPnl) statPnl.textContent = trading.dagens_pnl;
-    
-    const statWin = document.getElementById('statWin');
-    if (statWin) statWin.textContent = trading.win_rate;
-    
-    const statPos = document.getElementById('statPos');
-    if (statPos) statPos.textContent = trading.aabne_positioner;
+// ── Hent dokumentbibliotek ──
+async function fetchDocLibrary() {
+  try {
+    const response = await fetch('data/documents.json');
+    docLibrary = await response.json();
+    updateDocPanel();
+    console.log('📚 Bibliotek loaded:', docLibrary.total_files, 'filer i', docLibrary.categories, 'kategorier');
+  } catch (error) {
+    console.log('⚠️ Dokumentbibliotek ikke tilgængeligt:', error);
   }
 }
 
-// Fetch data on load
-fetchLiveData();
+// ── Opdater UI med projekt data ──
+function updateUIWithLiveData() {
+  if (!liveData.projects) return;
+  
+  // Trading stats (READ-ONLY!)
+  if (liveData.projects.trading) {
+    const t = liveData.projects.trading;
+    const statPnl = document.getElementById('statPnl');
+    if (statPnl) statPnl.textContent = t.dagens_pnl;
+    const statWin = document.getElementById('statWin');
+    if (statWin) statWin.textContent = t.win_rate;
+    const statPos = document.getElementById('statPos');
+    if (statPos) statPos.textContent = t.aabne_positioner;
+  }
+}
 
-// Refresh every 30 seconds
-setInterval(fetchLiveData, 30000);
+// ── Opdater dokument-panelet med rigtige filer ──
+function updateDocPanel() {
+  if (!docLibrary.library) return;
+  
+  const list = document.getElementById('docList');
+  if (!list) return;
+  
+  let totalCount = 0;
+  let html = '';
+  
+  // Sortér kategorier
+  const catOrder = [
+    '🚛 MLflyt',
+    '🌿 Sacred Pet / Sacred Shop',
+    '🗑️ AK Affaldsservice',
+    '📈 Trading',
+    '🔍 SEO & Marketing',
+    '💼 Forretning',
+    '🛠️ Tools & Systemer',
+    '🧠 Profil & System',
+    '📅 Daglige Logs',
+    '📁 Andet',
+  ];
+  
+  const tagColors = {
+    'md': 'tag-md',
+    'html': 'tag-html',
+    'json': 'tag-json',
+    'py': 'tag-json',
+    'js': 'tag-json',
+    'pdf': 'tag-pdf',
+  };
+  
+  catOrder.forEach(cat => {
+    const items = docLibrary.library[cat];
+    if (!items || !items.length) return;
+    totalCount += items.length;
+    
+    html += `<div class="doc-folder">
+      <div class="doc-folder-name" onclick="toggleFolder(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        ${cat} <span style="opacity:.5;font-size:9px;margin-left:4px">(${items.length})</span>
+      </div>
+      <div class="doc-folder-items">
+        ${items.map(doc => {
+          const tagClass = tagColors[doc.tag] || 'tag-md';
+          const preview = (doc.preview || '').replace(/`/g, "'").replace(/\n/g, '<br>').replace(/# /g, '<h3>').replace(/\|/g, ' ');
+          return `
+          <div class="doc-item" onclick="openDoc(this,'${doc.name.replace(/'/g,"\\'")}','<h2>${doc.name.replace(/'/g,"\\'")}</h2><p style=\\'color:var(--text-dim);font-size:11px\\'>📁 ${doc.path} · ${doc.size_kb} KB · ${new Date(doc.modified).toLocaleDateString("da-DK")}</p><hr style=\\'border-color:var(--border);margin:10px 0\\'><pre style=\\'white-space:pre-wrap;font-size:12px;line-height:1.6\\'>${preview}</pre>')">
+            <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ${doc.name}
+            <span class="doc-tag ${tagClass}">${doc.tag.toUpperCase()}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  });
+  
+  // Også kategorier der ikke er i catOrder
+  Object.keys(docLibrary.library).forEach(cat => {
+    if (catOrder.includes(cat)) return;
+    const items = docLibrary.library[cat];
+    if (!items || !items.length) return;
+    totalCount += items.length;
+    
+    html += `<div class="doc-folder">
+      <div class="doc-folder-name" onclick="toggleFolder(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        ${cat} <span style="opacity:.5;font-size:9px;margin-left:4px">(${items.length})</span>
+      </div>
+      <div class="doc-folder-items">
+        ${items.map(doc => `
+          <div class="doc-item" onclick="openDoc(this,'${doc.name.replace(/'/g,"\\'")}','<h2>${doc.name.replace(/'/g,"\\'")}</h2><p style=\\'color:var(--text-dim)\\'>📁 ${doc.path}</p>')">
+            <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ${doc.name}
+            <span class="doc-tag tag-md">${doc.tag.toUpperCase()}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  });
+  
+  list.innerHTML = html;
+  
+  // Opdater tæller
+  const countEl = document.getElementById('docCount');
+  if (countEl) countEl.textContent = totalCount;
+  
+  // Gør søgning aktiv på rigtige docs
+  const searchInput = document.getElementById('docSearch');
+  if (searchInput) {
+    searchInput.oninput = function(e) {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('.doc-item').forEach(item => {
+        const name = item.textContent.toLowerCase();
+        item.style.display = (!q || name.includes(q)) ? '' : 'none';
+      });
+      document.querySelectorAll('.doc-folder').forEach(folder => {
+        const visibleItems = folder.querySelectorAll('.doc-item:not([style*="display: none"])');
+        folder.style.display = visibleItems.length ? '' : 'none';
+      });
+    };
+  }
+}
 
-// ═══════════════════════════════════════════════
-// CHAT RESPONSES - Med live data
-// ═══════════════════════════════════════════════
+// ── Chat med live data ──
+const originalProcessCommand = typeof processCommand === 'function' ? processCommand : null;
 
-const originalProcessCommand = processCommand;
-processCommand = function(cmd) {
+function processCommandLive(cmd) {
   const lower = cmd.toLowerCase();
   
-  // Override med live data
+  // MLflyt med live data
   if (lower.includes('@mlflyt') && liveData.projects?.mlflyt) {
     const m = liveData.projects.mlflyt;
     return `🚛 <strong>MLflyt Status (LIVE)</strong><br><br>
@@ -71,19 +164,21 @@ processCommand = function(cmd) {
     📈 SEO Ranking: "flyttefirma aarhus" #${m.seo_ranking.flyttefirma_aarhus}<br>
     💼 Nye leads: ${m.nye_leads}<br>
     ✅ Status: ${m.status}<br><br>
-    <em>Sidst opdateret: ${new Date(m.last_updated).toLocaleTimeString()}</em>`;
+    <em>Sidst opdateret: ${new Date(m.last_updated).toLocaleTimeString('da-DK')}</em>`;
   }
   
+  // Sacred Pet med live data
   if (lower.includes('@sacred') && liveData.projects?.sacred) {
     const s = liveData.projects.sacred;
     return `🌿 <strong>Sacred Pet Status (LIVE)</strong><br><br>
     📦 Filer: ${s.filer.length} filer (${s.storrelse_kb} KB)<br>
     ✅ Status: ${s.status}<br>
     📋 Mangler:<br>
-    ${s.mangler.map(m => `• ${m}`).join('<br>')}<br><br>
-    <em>Sidst opdateret: ${new Date(s.last_updated).toLocaleTimeString()}</em>`;
+    ${s.mangler.map(m => '• ' + m).join('<br>')}<br><br>
+    <em>Sidst opdateret: ${new Date(s.last_updated).toLocaleTimeString('da-DK')}</em>`;
   }
   
+  // Trading med live data (READ-ONLY!)
   if (lower.includes('@trading') && liveData.projects?.trading) {
     const t = liveData.projects.trading;
     return `📈 <strong>Trading Bot Status (LIVE)</strong><br><br>
@@ -93,12 +188,39 @@ processCommand = function(cmd) {
     🎯 Win Rate: ${t.win_rate}<br>
     🔄 Åbne positioner: ${t.aabne_positioner}<br><br>
     <strong>Positioner:</strong><br>
-    ${t.positioner.map(p => `• ${p.symbol} ${p.direction} @ ${p.entry}`).join('<br>')}<br><br>
-    <em>Sidst opdateret: ${new Date(t.last_updated).toLocaleTimeString()}</em>`;
+    ${t.positioner.map(p => '• ' + p.symbol + ' ' + p.direction + ' @ ' + p.entry).join('<br>')}<br><br>
+    <em>Sidst opdateret: ${new Date(t.last_updated).toLocaleTimeString('da-DK')}</em>`;
   }
   
-  // Fallback til original
-  return originalProcessCommand(cmd);
-};
+  // Dokumentbibliotek
+  if (lower.includes('bibliotek') || lower.includes('docs') || lower.includes('filer')) {
+    if (docLibrary.library) {
+      let response = `📚 <strong>Dokumentbibliotek</strong><br><br>`;
+      response += `📁 ${docLibrary.total_files} filer i ${docLibrary.categories} kategorier<br><br>`;
+      Object.keys(docLibrary.library).forEach(cat => {
+        response += `${cat}: ${docLibrary.library[cat].length} filer<br>`;
+      });
+      response += `<br><em>Brug søgefeltet til venstre for at finde filer!</em>`;
+      return response;
+    }
+  }
+  
+  // Fallback
+  if (originalProcessCommand) return originalProcessCommand(cmd);
+  return null;
+}
 
-console.log('🔌 Live data connector loaded!');
+// Override processCommand hvis den eksisterer
+if (typeof processCommand !== 'undefined') {
+  processCommand = processCommandLive;
+}
+
+// ── Start alt ──
+fetchLiveData();
+fetchDocLibrary();
+
+// Refresh hvert 30. sekund
+setInterval(fetchLiveData, 30000);
+setInterval(fetchDocLibrary, 60000);
+
+console.log('🔌 Live data + dokumentbibliotek connector loaded!');

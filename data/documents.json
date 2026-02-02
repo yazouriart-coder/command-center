@@ -1,0 +1,815 @@
+{
+  "last_updated": "2026-02-02T23:21:56.290459",
+  "total_files": 79,
+  "categories": 9,
+  "library": {
+    "📅 Daglige Logs": [
+      {
+        "name": "Session Summary 2026 02 02",
+        "filename": "session-summary-2026-02-02.md",
+        "path": "memory/session-summary-2026-02-02.md",
+        "tag": "md",
+        "size_kb": 1.6,
+        "modified": "2026-02-02T21:49:48.117306",
+        "preview": "# Session Opsummering — 2026-02-02\n\n## ✅ Afsluttede Opgaver\n\n### 1. Memory System\n- Fikset lokal hukommelse (ingen API key nødvendig)\n- 56+ filer i `/memory/`\n- Oprettet: `MUJAFFA-PROFILE.md` med bruger-info\n\n### 2. Trading Bot",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 02 02 Session",
+        "filename": "2026-02-02-session.md",
+        "path": "memory/daily/2026-02/2026-02-02-session.md",
+        "tag": "md",
+        "size_kb": 2.8,
+        "modified": "2026-02-02T21:40:15.851891",
+        "preview": "# Session 2026-02-02 — Komplet Overblik\n\n## Hvad Vi Arbejdede På\n\n### 1. Memory System ✅\n- **Fikset:** Lokal hukommelse uden API key\n- **Lokation:** `/home/khalil/clawd/memory/`\n- **Antal filer:** 56+ dokumenter\n- **Status:** Jeg kan nu læse alle filer ved hver session\n",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 02 02 2019",
+        "filename": "2026-02-02-2019.md",
+        "path": "memory/2026-02-02-2019.md",
+        "tag": "md",
+        "size_kb": 4.5,
+        "modified": "2026-02-02T20:19:30.382988",
+        "preview": "# Session: 2026-02-02 20:19:30 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 142cc03b-741b-461c-8947-3f30b4f129c0\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: HEARTBEAT_OK\nuser: [Telegram Mujaffa (@Mujaffa1) id:98839986 +25s 2026-02-02 20:00 UTC] men betaler ikke iegnnem OpenRouter",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 02 02 Claude Cleanup",
+        "filename": "2026-02-02-claude-cleanup.md",
+        "path": "memory/2026-02-02-claude-cleanup.md",
+        "tag": "md",
+        "size_kb": 2.1,
+        "modified": "2026-02-02T12:43:27.772515",
+        "preview": "# Session: 2026-02-02 12:43:25 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 09189064-5e2e-489c-b31a-706e913a90ec\n- **Source**: telegram\n\n## Conversation Summary\n\nuser: [Telegram Mujaffa (@Mujaffa1) id:98839986 2026-02-02 12:41 UTC] eller er han fjernet\n[message_id: 5500]",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 02 01 2139",
+        "filename": "2026-02-01-2139.md",
+        "path": "memory/daily/2026-02/2026-02-01-2139.md",
+        "tag": "md",
+        "size_kb": 1.0,
+        "modified": "2026-02-01T21:40:00.244195",
+        "preview": "# Session: 2026-02-01 21:39:44 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 0f14e75c-c606-4870-b201-6dc6f8a453d0\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: Aha! Nu forstår jeg! **Polymarket** og **Voice** fanerne!\n",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2025 07 07",
+        "filename": "2025-07-07.md",
+        "path": "memory/daily/2025-07/2025-07-07.md",
+        "tag": "md",
+        "size_kb": 0.3,
+        "modified": "2026-02-01T21:39:53.992157",
+        "preview": "# 2025-07-07\n\n## Context Flush\n- Bruger anmodede om at gemme opsummering før context-rydning (auto-compaction triggeret)\n- Ingen specifikke opgaver eller beslutninger at notere fra denne korte udveksling\n- System: Session nær auto-compaction grænse\n\n## Status\n- Intet aktivt der kræver opfølgning",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "Status 2026 02 01 Design Issue",
+        "filename": "status-2026-02-01-design-issue.md",
+        "path": "memory/status-2026-02-01-design-issue.md",
+        "tag": "md",
+        "size_kb": 0.9,
+        "modified": "2026-02-01T19:53:52.573872",
+        "preview": "# Opsummering 2026-02-01 Aften - Claude\n\n## Hvad skete:\n1. Mujaffa klagede over at Command Center var rullet tilbage til gammelt design\n2. Fandt frem til at kun `dashboard.html` havde nyt Cyberpunk design (commit e20286d)\n3. Andre templates (docs.html, geo.html osv.) havde stadig gammelt orange design\n4. Problem: Ghetto opdaterede kun dashboard.html, ikke alle sider\n\n## Status:\n- ✅ Command Center kører",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "Status 2026 02 01 Aften",
+        "filename": "status-2026-02-01-aften.md",
+        "path": "memory/status-2026-02-01-aften.md",
+        "tag": "md",
+        "size_kb": 0.6,
+        "modified": "2026-02-01T18:37:38.903381",
+        "preview": "# Status 2026-02-01 Aften\n\n## Geo-sider\n✅ **Alle 37 MLFlyt geo-sider genskabt**\n- Placering: `/home/khalil/command-center/data/mlflyt-geo-pages/`\n- Filnavne: `aarhus.html`, `risskov.html`, osv. (uden prefix)\n- Unikt indhold per by\n- Klar til upload\n\n## Command Center",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "Opsummering 2026 02 01 Claude",
+        "filename": "opsummering-2026-02-01-claude.md",
+        "path": "memory/opsummering-2026-02-01-claude.md",
+        "tag": "md",
+        "size_kb": 0.8,
+        "modified": "2026-02-01T18:34:43.943318",
+        "preview": "# Opsummering 2026-02-01 - Claude session\n\n## Hvad skete:\n1. **Ghetto (Kimi)** forsøgte at optimere Command Center\n2. **Fejl:** Brugte `git clean` som slettede alle 37 MLFlyt geo-sider\n3. **Genskabelse:** Sub-agent genererede alle 37 sider på ny\n4. **Resultat:** Siderne er tilbage med nye SEO-venlige filnavne\n\n## Status:\n- ✅ 37 geo-sider genskabt",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "Status 2026 02 01 1506",
+        "filename": "status-2026-02-01-1506.md",
+        "path": "memory/status-2026-02-01-1506.md",
+        "tag": "md",
+        "size_kb": 2.0,
+        "modified": "2026-02-01T15:09:00.790590",
+        "preview": "# Status Opsummering - 2026-02-01 15:06 UTC\n\n## MLFlyt Geo-Sider\n- ✅ 37 geo-sider genereret (HTML) i `/home/khalil/command-center/data/mlflyt-geo-pages/`\n- ✅ Template + README oprettet til fremtidig brug\n- ⚠️ Design og links skal gennemgås manuelt med Mujaffa (når han er hjemme)\n- ⚠️ Kontaktformular skal tilføjes (lead tracking per by)\n- 📋 Rettelsesliste: `/home/khalil/clawd/memory/mlflyt-geo-rettelser-2026-02-01.md`\n\n## SEO Monitor System",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 02 01 Sessions Opsummering",
+        "filename": "2026-02-01-sessions-opsummering.md",
+        "path": "memory/daily/2026-02/2026-02-01-sessions-opsummering.md",
+        "tag": "md",
+        "size_kb": 1.2,
+        "modified": "2026-02-01T02:21:28.591784",
+        "preview": "# Session Opsummering - 2. februar 2026\n\n## ✅ Gennemført\n\n### SEO/GEO Strategi\n- **Serper.dev API** sat op (2,499 credits, $50/50K searches)\n- **SEO Tool** bygget med caching, export til JSON/CSV, CLI interface\n- **38 byer undersøgt** (Aarhus område)\n- **MLflyt ranker på 12 byer** allerede (Aarhus N/V, Malling, Lystrup, Løgten, Stavtrup, Mårslet, Norsminde, Kolt, Harlev, Ajstrup)\n- **27 GEO landing pages** genereret til manglende byer",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 02 01",
+        "filename": "2026-02-01.md",
+        "path": "memory/daily/2026-02/2026-02-01.md",
+        "tag": "md",
+        "size_kb": 0.8,
+        "modified": "2026-02-01T00:31:15.201638",
+        "preview": "# Plan - 1. februar 2026\n\n## Trading Bot - LIVE Mandag\n**Status:** Klar til live test\n**Capital:** $1000\n**Tidspunkt:** Finder vi ud af\n\n## TODO Mandag\n1. [ ] Trading Dashboard med grafer og performance visning\n2. [ ] Fix cooldown loop problem (bot åbner ny position med det samme den gamle lukker)",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 30 Aften",
+        "filename": "2026-01-30-aften.md",
+        "path": "memory/daily/2026-01/2026-01-30-aften.md",
+        "tag": "md",
+        "size_kb": 0.9,
+        "modified": "2026-01-30T21:18:22.599983",
+        "preview": "# Session Opsummering – 30. januar 2026 (Aften)\n\n## Nye Systemer Sat Op\n\n### 1. Agent Swarm (3 agenter)\n- **trading-agent:** Analyserer trades, performance rapporter\n- **seo-agent:** SEO optimering, konkurrent analyse\n- **builder-agent:** Bygger værktøjer (startet på MLflyt Lead Generator)\n\n### 2. Bureau Analyse Dokumentation",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 30 1410",
+        "filename": "2026-01-30-1410.md",
+        "path": "memory/daily/2026-01/2026-01-30-1410.md",
+        "tag": "md",
+        "size_kb": 0.9,
+        "modified": "2026-01-30T17:33:44.983783",
+        "preview": "# Session Opsummering – 30. januar 2026\n\n## Udført i denne session\n\n### 1. Dashboard (Command Center)\n- **GitHub Pages:** https://yazouriart-coder.github.io/mujaffa-dashboard/\n- **Opdaterer automatisk:** Hver 2. time med live data\n- **Viser:** Trading bot, website status, konkurrenter, seneste 10 handler\n- **Slettet:** Gamle dashboards (kun ét nu)\n",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 30 0127",
+        "filename": "2026-01-30-0127.md",
+        "path": "memory/daily/2026-01/2026-01-30-0127.md",
+        "tag": "md",
+        "size_kb": 2.3,
+        "modified": "2026-01-30T01:27:46.850920",
+        "preview": "# Session: 2026-01-30 01:27:46 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 3985e577-9c4a-4fd3-8d92-c399efd8c003\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: Her er hvad jeg har om dig og dine firmaer:\n",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 30 0105",
+        "filename": "2026-01-30-0105.md",
+        "path": "memory/daily/2026-01/2026-01-30-0105.md",
+        "tag": "md",
+        "size_kb": 1.5,
+        "modified": "2026-01-30T01:05:34.669900",
+        "preview": "# Session: 2026-01-30 01:05:34 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: d9d8480a-64af-4b42-b97d-df44f1107188\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: ✅ New session started · model: kimi/kimi-k2.5\nuser: A new session was started via /new or /reset. Say hi briefly (1-2 sentences) and ask what the user wants to do next. If the runtime model differs from default_model in the system prompt, mention the default model in the greeting. Do not mention internal steps, files, tools, or reasoning.",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 30 0058",
+        "filename": "2026-01-30-0058.md",
+        "path": "memory/daily/2026-01/2026-01-30-0058.md",
+        "tag": "md",
+        "size_kb": 0.6,
+        "modified": "2026-01-30T00:58:07.041915",
+        "preview": "# Session: 2026-01-30 00:58:06 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 251c6b86-e867-4cc1-8c56-7ce307e011f2\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: ✅ New session started · model: kimi/kimi-k2.5\nuser: System: [2026-01-30 00:57:39 UTC] Model switched to opus (anthropic/claude-opus-4-5).",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 30 0057",
+        "filename": "2026-01-30-0057.md",
+        "path": "memory/daily/2026-01/2026-01-30-0057.md",
+        "tag": "md",
+        "size_kb": 4.2,
+        "modified": "2026-01-30T00:57:54.275838",
+        "preview": "# Session: 2026-01-30 00:57:54 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 80faf633-3e23-4de6-9ea7-ad471bb1ff96\n- **Source**: telegram\n\n## Conversation Summary\n\nuser: [Telegram Mujaffa (@Mujaffa1) id:98839986 +55s 2026-01-30 00:53 UTC] DU min asisten jo\n[message_id: 2262]",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "Session Summary 2026 01 30",
+        "filename": "session-summary-2026-01-30.md",
+        "path": "memory/session-summary-2026-01-30.md",
+        "tag": "md",
+        "size_kb": 1.8,
+        "modified": "2026-01-30T00:48:57.825630",
+        "preview": "# Session Summary - 30. januar 2026\n\n## Opnået i denne session:\n\n### 1. Netlify Content Factory Strategi\n- Oprettet mappestruktur: `netlify/mlflyt/`, `netlify/sacredshop/`, `netlify/akaffaldsservice/`\n- Design templates klar (MLflyt med 🦒 girafbil tema, Sacred Shop med 🌿 WeAreGreen tema)\n- Strategi: Subdomæne `content.[domæne].dk` til SEO/GEO content\n- 30 artikler på 30 dage plan\n",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 29 2152",
+        "filename": "2026-01-29-2152.md",
+        "path": "memory/daily/2026-01/2026-01-29-2152.md",
+        "tag": "md",
+        "size_kb": 0.2,
+        "modified": "2026-01-29T21:52:09.065973",
+        "preview": "# Session: 2026-01-29 21:52:09 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: d13f8ab3-88c3-4a81-a90e-8372fbe878e0\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: ✅ New session started · model: kimi/kimi-k2.5",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 29 2151",
+        "filename": "2026-01-29-2151.md",
+        "path": "memory/daily/2026-01/2026-01-29-2151.md",
+        "tag": "md",
+        "size_kb": 0.2,
+        "modified": "2026-01-29T21:51:56.025894",
+        "preview": "# Session: 2026-01-29 21:51:40 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 2caa02ed-0c9d-43db-a9d8-542d792b8b83\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: ✅ New session started · model: kimi/kimi-k2.5",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 29 2145",
+        "filename": "2026-01-29-2145.md",
+        "path": "memory/daily/2026-01/2026-01-29-2145.md",
+        "tag": "md",
+        "size_kb": 0.3,
+        "modified": "2026-01-29T21:45:57.753714",
+        "preview": "# Session: 2026-01-29 21:45:42 UTC\n\n- **Session Key**: agent:main:main\n- **Session ID**: 01d2b3e6-7ad4-475d-b9fa-a6e6e2dc70f7\n- **Source**: telegram\n\n## Conversation Summary\n\nassistant: Lad mig tjekke om Chromium har alle dependencies:\nassistant: Chromium er en snap version med begrænsninger. Lad mig installere Playwright's Chromium:",
+        "category": "📅 Daglige Logs"
+      },
+      {
+        "name": "2026 01 29",
+        "filename": "2026-01-29.md",
+        "path": "memory/daily/2026-01/2026-01-29.md",
+        "tag": "md",
+        "size_kb": 1.3,
+        "modified": "2026-01-29T21:32:43.765783",
+        "preview": "# Session 2026-01-29 — Opsummering\n\n## Identitet & Setup\n- Navn: Ghetto (Loyal AI right-hand)\n- Bruger: Mujaffa — entreprenant, logistik/flytning, AI, automation\n- Sprog: Dansk\n- Standard-model: Kimi K2.5 (billigere)\n- Fallback: Claude Opus 4.5\n\n## Firmaer",
+        "category": "📅 Daglige Logs"
+      }
+    ],
+    "📁 Andet": [
+      {
+        "name": "Data Connector Plan",
+        "filename": "DATA-CONNECTOR-PLAN.md",
+        "path": "DATA-CONNECTOR-PLAN.md",
+        "tag": "md",
+        "size_kb": 2.0,
+        "modified": "2026-02-02T23:02:56.088498",
+        "preview": "# 🔌 DATA CONNECTOR PLAN\n## Forbinder Command Center til dine projekter\n\n---\n\n## 🎯 HVAD JEG KAN GØRE (med fil-adgang)\n\n### 1. MLflyt Data\n**Jeg kan læse:**\n- GitHub repo: `yazouriart-coder/mlflyt-seo-geo`",
+        "category": "📁 Andet"
+      },
+      {
+        "name": "Project Hub Plan",
+        "filename": "PROJECT-HUB-PLAN.md",
+        "path": "PROJECT-HUB-PLAN.md",
+        "tag": "md",
+        "size_kb": 7.8,
+        "modified": "2026-02-02T22:55:42.885903",
+        "preview": "# 🎯 PROJECT HUB - Central Kommandocenter\n## Forbind alle projekter ét sted. Jeg hjælper indefra.\n\n---\n\n## 🏗️ ARKITEKTUR (Sådan virker det)\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│                    PROJECT HUB                              │",
+        "category": "📁 Andet"
+      },
+      {
+        "name": "2026 02 02",
+        "filename": "2026-02-02.md",
+        "path": "memory/2026-02-02.md",
+        "tag": "md",
+        "size_kb": 3.4,
+        "modified": "2026-02-02T17:36:00.339597",
+        "preview": "# 2026-02-02 — Trading Bot v1 — Komplet Oversigt\n\n## Bot-v1 Filstruktur\n- Hovedkode: `/home/khalil/bot-v1/trading_bot.py`\n- Strategies/core: `/home/khalil/clawd/trading-bot/` (importeres via sys.path)\n  - `core/data_fetcher.py` — ccxt-baseret, understøtter Bybit + Binance, spot + futures\n  - `strategies/fvg_detector.py` — Fair Value Gap detection\n  - `strategies/orderblock_detector.py` — Order Block detection\n  - `strategies/market_structure.py` — Trend + markedsfase analyse\n- Config: `/home/khalil/bot-v1/bot_config.json`",
+        "category": "📁 Andet"
+      },
+      {
+        "name": "Folder Structure",
+        "filename": "FOLDER-STRUCTURE.md",
+        "path": "FOLDER-STRUCTURE.md",
+        "tag": "md",
+        "size_kb": 3.3,
+        "modified": "2026-02-01T22:14:51.335738",
+        "preview": "# Mappe Struktur Regel — Clawdbot Workspace\n\n## Princip\n**Alt skal ligge i mapper.** Ingen løse filer i `~/clawd/` root.\n\n---\n\n## Struktur\n\n```",
+        "category": "📁 Andet"
+      },
+      {
+        "name": "Design System",
+        "filename": "DESIGN-SYSTEM.md",
+        "path": "DESIGN-SYSTEM.md",
+        "tag": "md",
+        "size_kb": 3.0,
+        "modified": "2026-01-30T02:21:02.361059",
+        "preview": "# Mujaffa Design System\n## Profesionelt UI komponent bibliotek\n\n---\n\n## 🎨 Farver\n\n### Primære\n- Orange: `#f59e0b` (primary)\n- Pink: `#ec4899` (secondary)",
+        "category": "📁 Andet"
+      }
+    ],
+    "🧠 Profil & System": [
+      {
+        "name": "Core Principle",
+        "filename": "CORE-PRINCIPLE.md",
+        "path": "memory/CORE-PRINCIPLE.md",
+        "tag": "md",
+        "size_kb": 1.4,
+        "modified": "2026-02-02T23:16:28.156354",
+        "preview": "# 🧠 KERNEPRINCIP — Ghetto = Mujaffas Forlængede Arm\n\n> **Ghetto er et værktøj mellem Mujaffa og Mujaffa.**\n> Alt skal integreres sammen til ét samlet system.\n\n---\n\n## Hvad det betyder:\n\n1. **Ét Interface** — Mujaffa taler til Ghetto, og Ghetto håndterer ALT",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "My Learning System",
+        "filename": "MY-LEARNING-SYSTEM.md",
+        "path": "memory/MY-LEARNING-SYSTEM.md",
+        "tag": "md",
+        "size_kb": 3.9,
+        "modified": "2026-02-02T22:08:50.924124",
+        "preview": "# Ghetto's Læringslog — Metode & Forbedring\n\n## Hvordan Jeg Bliver Bedre (System)\n\n### 1. RESEARCH FØRST (Inden opgave)\n**Hvad jeg gør:**\n- Søger aktuelle trends (2026, ikke 2023!)\n- Finder pro eksempler\n- Analyserer konkurrenter\n- Læser best practices",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Learning Cro 2026",
+        "filename": "learning-cro-2026.md",
+        "path": "memory/learning-cro-2026.md",
+        "tag": "md",
+        "size_kb": 4.8,
+        "modified": "2026-02-02T22:07:33.522663",
+        "preview": "# Hvad Jeg Lærte Af At Studere Pro Websites (2026)\n\n## 🔥 Top Konverteringsteknikker\n\n### 1. **AI-Powered Personalization**\n- Dynamisk indhold baseret på brugerens adfærd\n- Segmentering: Vis andet indhold til nye vs. returnerende besøgende\n- Geolocation: Tilpas efter land/by\n\n**Implementering:**",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Mujaffa Profile",
+        "filename": "MUJAFFA-PROFILE.md",
+        "path": "memory/MUJAFFA-PROFILE.md",
+        "tag": "md",
+        "size_kb": 1.7,
+        "modified": "2026-02-02T20:28:32.552145",
+        "preview": "# Mujaffa - Brugerprofil & Huskeliste\n\n## Profil\n- **Navn:** Mujaffa\n- **Stil:** Entreprenant og handlekraftig\n- **Arbejder med:** Forretning, logistik/flytning, digitale projekter, AI, automation, investering\n- **Kommunikation:** Hurtig tænkning, mange projekter parallelt, vil have klare praktiske svar uden fluff\n- **Sprog:** Dansk (standard)\n\n## Familie",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Speech Rule",
+        "filename": "speech-rule.md",
+        "path": "memory/speech-rule.md",
+        "tag": "md",
+        "size_kb": 0.3,
+        "modified": "2026-01-31T21:43:26.891957",
+        "preview": "# Tale-Regel\n\n## Normalt\n- Jeg svarer altid med **TEKST**\n\n## Når du siger\n- \"**Tal**\"\n- \"**Svar med tale**\"\n- \"**Sig det**\"\n",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Voice Brain Config",
+        "filename": "voice-brain-config.md",
+        "path": "memory/voice-brain-config.md",
+        "tag": "md",
+        "size_kb": 0.7,
+        "modified": "2026-01-31T21:10:22.604968",
+        "preview": "# Fælles Voice Hjerne - Konfiguration\n\n## Hvordan det virker\n1. Du taler (Telegram ELLER Command Center)\n2. Whisper (Groq) konverterer til tekst\n3. Tekst sendes til mig (Ghetto)\n4. Jeg svarer tilbage\n5. ElevenLabs læser svaret op (hvis du vil have lyd)\n\n## Integrationer",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Voice Agent",
+        "filename": "voice-agent.md",
+        "path": "memory/voice-agent.md",
+        "tag": "md",
+        "size_kb": 1.2,
+        "modified": "2026-01-31T14:51:30.455831",
+        "preview": "# Voice Agent - Hukommelse\n\n## Konfiguration\n- **Provider:** ElevenLabs\n- **API Key:** `elevenlabs:default` (auth-profiles.json)\n- **Default Stemme:** Brian\n  - Voice ID: `nPczCjzI2devNBz1zQrb`\n  - Type: Deep, Resonant, American\n  - Settings: Stability 0.3, Similarity 0.85, Style 0.5\n",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Build Protocol",
+        "filename": "build-protocol.md",
+        "path": "memory/build-protocol.md",
+        "tag": "md",
+        "size_kb": 1.1,
+        "modified": "2026-01-29T21:16:13.053995",
+        "preview": "# Bygge-protokol for Mujaffa\n\n## Gyldne regel:\n**Altid byg noget Mujaffa (eller Ghetto) kan bruge** — praktisk, ikke teoretisk. Løs reelle problemer, ikke hypotetiske. Forbedringer til vores workflow tæller også!\n\n## Tjek før byg:\n- Har Mujaffa allerede en løsning til firmaerne?\n- Spørg før booking af tid/køb af tools\n- Undgå at bygge noget der allerede findes\n",
+        "category": "🧠 Profil & System"
+      },
+      {
+        "name": "Memory Rules",
+        "filename": "memory-rules.md",
+        "path": "memory/memory-rules.md",
+        "tag": "md",
+        "size_kb": 0.7,
+        "modified": "2026-01-29T20:59:52.739759",
+        "preview": "# Huskeregler for hukommelse\n\n## Altid gemme:\n- ✅ Bygge-protokoller og regler\n- ✅ Preferences (Kimi som standard-model, dansk sprog)\n- ✅ Projekt-ideer og beslutninger\n- ✅ API-nøgler og configs (uden at eksponere secrets)\n- ✅ Workflow-forbedringer vi aftaler\n- ✅ Kontekst om projekter (trading bot, n8n, osv.)\n",
+        "category": "🧠 Profil & System"
+      }
+    ],
+    "🛠️ Tools & Systemer": [
+      {
+        "name": "Deploy Gratis",
+        "filename": "DEPLOY-GRATIS.md",
+        "path": "DEPLOY-GRATIS.md",
+        "tag": "md",
+        "size_kb": 1.1,
+        "modified": "2026-02-02T23:07:13.897041",
+        "preview": "# 🚀 GRATIS DEPLOY - 3 Klik!\n\n## Mulighed 1: Netlify Drop (EASIEST - Anbefalet!)\n\n**Link:** https://app.netlify.com/drop\n\n**Sådan gør du:**\n1. Klik på linket ovenfor\n2. Træk folderen `command-center-live` ind i browseren\n3. Få URL med det samme!",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Deploy Guide",
+        "filename": "DEPLOY-GUIDE.md",
+        "path": "DEPLOY-GUIDE.md",
+        "tag": "md",
+        "size_kb": 1.1,
+        "modified": "2026-02-02T23:00:11.021509",
+        "preview": "# 🚀 Deploy Command Center\n\n## Mulighed 1: Vercel (Anbefalet)\n\n```bash\n# 1. Installer Vercel\nnpm i -g vercel\n\n# 2. Login\nvercel login",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Ultimate Wordpress Plugins",
+        "filename": "ULTIMATE-WORDPRESS-PLUGINS.md",
+        "path": "memory/ULTIMATE-WORDPRESS-PLUGINS.md",
+        "tag": "md",
+        "size_kb": 11.1,
+        "modified": "2026-02-02T22:35:08.290536",
+        "preview": "# 🚀 ULTIMATIVE GRATIS WordPress Plugins (2026)\n## Komplet arsenal til landing pages, CRO, e-commerce & mere!\n\n---\n\n## 🎯 ESSENTIAL (MUST HAVE) - Installér disse først!\n\n### SEO & Performance\n| Plugin | Downloads | Rating | Hvad den gør |\n|--------|-----------|--------|--------------|",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Mega Tools Arsenal",
+        "filename": "MEGA-TOOLS-ARSENAL.md",
+        "path": "memory/MEGA-TOOLS-ARSENAL.md",
+        "tag": "md",
+        "size_kb": 16.9,
+        "modified": "2026-02-02T22:31:01.290063",
+        "preview": "# 🚀 ULTIMATIVT Gratis Værktøjs Arsenal (MEGA EDITION)\n## ALLE gratis værktøjer til landing pages, CRO, analytics & mere!\n\n---\n\n## 🎯 WORDPRESS PLUGINS (100% Gratis)\n\n### Essential (MUST HAVE)\n| Plugin | Funktion | Hvorfor |\n|--------|----------|---------|",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Ultimate Free Tools",
+        "filename": "ULTIMATE-FREE-TOOLS.md",
+        "path": "memory/ULTIMATE-FREE-TOOLS.md",
+        "tag": "md",
+        "size_kb": 7.5,
+        "modified": "2026-02-02T22:23:45.854465",
+        "preview": "# 🛠️ ULTIMATIVT Gratis Værktøjs Arsenal (2026)\n\n## 🎯 Mission: BYGGE ULTIMATE Sacred Pet Med ALLE Gratis Værktøjer!\n\n---\n\n## 1. ANALYTICS & TRACKING (100% Gratis)\n\n| Værktøj | Hvad den gør | Setup | Link |\n|---------|-------------|-------|------|",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Tools To Add",
+        "filename": "TOOLS-TO-ADD.md",
+        "path": "memory/TOOLS-TO-ADD.md",
+        "tag": "md",
+        "size_kb": 6.0,
+        "modified": "2026-02-02T22:09:40.969423",
+        "preview": "# Værktøjer Til At Forbedre Ghetto 🛠️\n\n## Nuværende Værktøjer (Har)\n- ✅ **Tailwind CSS** — Moderne styling\n- ✅ **GitHub CLI** — Version control\n- ✅ **Docker** — Containerization\n- ✅ **PageSpeed API** — Performance check\n- ✅ **Serper.dev** — SEO research\n\n---",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Command Center Koncept",
+        "filename": "command-center-koncept.md",
+        "path": "memory/command-center-koncept.md",
+        "tag": "md",
+        "size_kb": 1.2,
+        "modified": "2026-02-02T20:38:56.539827",
+        "preview": "# Command Center - Koncept\n\n## Koncept: \"Én Side, Al Information\"\nIngen faner. Ingen backend. Bare én HTML side der viser alt.\n\n---\n\n## Sektioner (top til bund)\n\n| Sektion | Hvad den viser |",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Prompts",
+        "filename": "PROMPTS.md",
+        "path": "memory/PROMPTS.md",
+        "tag": "md",
+        "size_kb": 3.1,
+        "modified": "2026-02-02T20:37:53.877456",
+        "preview": "# Prompts - System Instruktioner\n\n## 1. Ghetto (Mig) - System Prompt\n\n### Identitet\n- Navn: Ghetto\n- Skarp, løsningsorienteret assistent\n- Professionel, direkte, ingen fluff\n\n### Output-standard",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Command Center",
+        "filename": "COMMAND-CENTER.md",
+        "path": "COMMAND-CENTER.md",
+        "tag": "md",
+        "size_kb": 5.1,
+        "modified": "2026-02-02T12:07:39.768414",
+        "preview": "# 🎯 MUJAFFA COMMAND CENTER\n\n> **Hvordan vi arbejder sammen**\n\n---\n\n## 📁 VORES FILER\n\n```\n/home/khalil/clawd/",
+        "category": "🛠️ Tools & Systemer"
+      },
+      {
+        "name": "Quick Ref",
+        "filename": "QUICK-REF.md",
+        "path": "memory/QUICK-REF.md",
+        "tag": "md",
+        "size_kb": 4.3,
+        "modified": "2026-01-30T20:57:49.020406",
+        "preview": "# Huskeliste - Vigtige referencer\n\n## Tokens & Credentials (hvor de findes)\n- **Netlify PAT**: `auto-deploy.sh` → `NETLIFY_TOKEN=\"nfp_vbr5uLLHTrHTBJ5CFtuC3JhDCBa642Xnfc0e\"`\n- **Kimi/Moonshot API key**: n8n credentials (ikke i chat!)\n- **Telegram**: @Mujaffa1 (id: 98839986)\n\n## Aktive projekter (prioriteret)\n1. **MLflyt** (mlflyt.dk) - Flyttefirma m. girafbiler\n2. **Sacred Shop** (sacred-shop.com) - CBD + essential oils",
+        "category": "🛠️ Tools & Systemer"
+      }
+    ],
+    "🗑️ AK Affaldsservice": [
+      {
+        "name": "Tilbud Ninna Rieck 2026 02 02",
+        "filename": "tilbud-ninna-rieck-2026-02-02.md",
+        "path": "projects/akaffaldsservice/tilbud-ninna-rieck-2026-02-02.md",
+        "tag": "md",
+        "size_kb": 2.2,
+        "modified": "2026-02-02T10:44:16.059728",
+        "preview": "# Tilbud på containerleje og bortskaffelse af byggeaffald\n\n**Til:** Ninna Rieck\n**E-mail:** ninnarieck@gmail.com\n**Telefon:** 26 28 53 60\n**Adresse:** Hjortshøj (200 kvm. bolig)\n**Dato:** 2. februar 2026\n**Gyldig til:** 16. februar 2026\n\n---",
+        "category": "🗑️ AK Affaldsservice"
+      },
+      {
+        "name": "Akaffaldsservice Frenemy Strategi",
+        "filename": "akaffaldsservice-frenemy-strategi.md",
+        "path": "memory/akaffaldsservice-frenemy-strategi.md",
+        "tag": "md",
+        "size_kb": 2.6,
+        "modified": "2026-01-30T00:07:15.641913",
+        "preview": "# AK Affaldsservice - \"Frenemy\" Strategi\n\n## Komplekst forhold til JunkBusters\n\n**Partner:** De sender Aarhus-opgaver til AK\n**Konkurrent:** De opererer også i Aarhus (særligt byen)\n**Balancen:** Samarbejd hvor det giver mening, konkurrér hvor I er stærkest\n\n---\n",
+        "category": "🗑️ AK Affaldsservice"
+      },
+      {
+        "name": "Akaffaldsservice Korrigeret Strategi",
+        "filename": "akaffaldsservice-korrigeret-strategi.md",
+        "path": "memory/akaffaldsservice-korrigeret-strategi.md",
+        "tag": "md",
+        "size_kb": 2.1,
+        "modified": "2026-01-30T00:06:34.835671",
+        "preview": "# AK Affaldsservice - KORRIGERET Strategi\n\n## VIGTIGT: JunkBusters = Partner, ikke konkurrent!\n\n**Forhold:** JunkBusters henter opgaver i Aarhus → sender til AK Affaldsservice\n**Konsekvens:** Vi skal IKKE angribe dem, men supplere dem!\n\n---\n\n## Ny positionering",
+        "category": "🗑️ AK Affaldsservice"
+      },
+      {
+        "name": "Akaffaldsservice Konkurrenter",
+        "filename": "akaffaldsservice-konkurrenter.md",
+        "path": "memory/akaffaldsservice-konkurrenter.md",
+        "tag": "md",
+        "size_kb": 3.6,
+        "modified": "2026-01-30T00:04:35.992973",
+        "preview": "# AK Affaldsservice - Konkurrentanalyse\n\n## Hovedkonkurrent: JunkBusters\n\n**URL:** https://www.junkbusters.dk/\n**Område:** København + Aarhus (landsdækkende)\n**Erfaring:** 10+ år\n**Koncept:** \"Affaldstaxa\" — to friske mænd henter\n**SEO-score:** 7/10 ⭐\n",
+        "category": "🗑️ AK Affaldsservice"
+      },
+      {
+        "name": "Akaffaldsservice B2B Strategi",
+        "filename": "akaffaldsservice-b2b-strategi.md",
+        "path": "memory/akaffaldsservice-b2b-strategi.md",
+        "tag": "md",
+        "size_kb": 4.9,
+        "modified": "2026-01-30T00:03:42.159658",
+        "preview": "# AK Affaldsservice - Opdateret B2B Strategi\n\n## Fokus: Erhvervskunder + Convenience-private\n\n**Indsigt fra Mujaffa:**\n- Storskrald er gratis (kommunalt) for private\n- Mange ringer og tror de er kommunen → forkerte henvendelser\n- **Erhvervskunder betaler** = gode kunder (høj margin!)\n- Convenience-kunder (kan ikke selv) = også gode kunder\n",
+        "category": "🗑️ AK Affaldsservice"
+      },
+      {
+        "name": "Akaffaldsservice Analyse",
+        "filename": "akaffaldsservice-analyse.md",
+        "path": "memory/akaffaldsservice-analyse.md",
+        "tag": "md",
+        "size_kb": 3.7,
+        "modified": "2026-01-29T23:59:29.603212",
+        "preview": "# AK Affaldsservice - Analyse\n\n**URL:** https://akaffaldsservice.dk/\n**Niche:** Affalds/service (storskrald, byggeaffald, haveaffald)\n**Område:** Aarhus og omegn\n**Forbindelse:** MLflyt (samme ejer/koncern) — \"Affaldsservice og Flyttefirma under ét tag\"\n\n---\n\n## Nuværende status",
+        "category": "🗑️ AK Affaldsservice"
+      }
+    ],
+    "🌿 Sacred Pet / Sacred Shop": [
+      {
+        "name": "Status Sacred Pet",
+        "filename": "STATUS-SACRED-PET.md",
+        "path": "STATUS-SACRED-PET.md",
+        "tag": "md",
+        "size_kb": 2.3,
+        "modified": "2026-02-02T22:35:36.240703",
+        "preview": "# 🎯 STATUS: Sacred Pet CBD Projekt\n\n## ✅ HVAD DER ER LEVERET\n\n### 1. Værktøjs Research (FÆRDIG)\n| Fil | Indhold |\n|-----|---------|\n| `MEGA-TOOLS-ARSENAL.md` | **200+ gratis værktøjer** (analytics, hosting, email, osv.) |\n| `ULTIMATE-WORDPRESS-PLUGINS.md` | **80+ WordPress plugins** (SEO, WooCommerce, CRO) |\n",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Cbd Pet Project",
+        "filename": "CBD-PET-PROJECT.md",
+        "path": "projects/cbd-pet/CBD-PET-PROJECT.md",
+        "tag": "md",
+        "size_kb": 2.7,
+        "modified": "2026-02-02T22:06:21.869235",
+        "preview": "# CBD Pet Project — Komplet Opsummering\n\n## Status: Test/Koncept Fase\n**Dato:** 2026-02-02\n**Formål:** Validere CBD til kæledyr som forretningsidé\n\n## ✅ Hvad Vi Fandt\n\n### Markedshul (Stort!)\n- 600.000 hunde i Danmark",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Cbd Pet Markedshul",
+        "filename": "cbd-pet-markedshul.md",
+        "path": "memory/cbd-pet-markedshul.md",
+        "tag": "md",
+        "size_kb": 1.7,
+        "modified": "2026-02-02T21:20:38.986868",
+        "preview": "# CBD til Kæledyr — Markedshul Analyse\n\n## Koncept: Sacred Pet CBD\n**Status:** Testet på WordPress (localhost:8080)\n**Opdaget:** 2026-02-02\n\n## Markedet\n- 600.000 hunde i Danmark\n- 40% har angst, smerter eller ledproblemer\n- Ingen danske CBD brands fokuserer på kæledyr",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop Produktkatalog",
+        "filename": "sacredshop-produktkatalog.md",
+        "path": "memory/sacredshop-produktkatalog.md",
+        "tag": "md",
+        "size_kb": 4.6,
+        "modified": "2026-01-30T00:24:19.185099",
+        "preview": "# Sacred Shop - Produktkatalog Analyse\n\n## Kategorier (7 hovedkategorier)\n\n### 1. 🌿 Hemp & CBD (WeAreGreen brand)\n| Produkt | Pris | Styrke |\n|---------|------|--------|\n| 2.5% CBD Oil RAW 10ml | €12.95 | Begynder |\n| 2.5% CBD Hemp Oil 10ml | €12.95 | Begynder |\n| 5% CBD Oil RAW 10ml | €19.95 | Standard |",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop Bred Content Strategi",
+        "filename": "sacredshop-bred-content-strategi.md",
+        "path": "memory/sacredshop-bred-content-strategi.md",
+        "tag": "md",
+        "size_kb": 4.1,
+        "modified": "2026-01-30T00:23:06.433655",
+        "preview": "# Sacred Shop - Bred Content Strategi (Revideret)\n\n## Du har ret! Tænk ud over \"CBD olie\"\n\n**Nordic Oil: 25.000 kunder/md**\n**Du skal have: 1.000 kunder = 4% af markedet**\n\nDet er **realistisk** hvis du tænker bredt!\n\n---",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop Cbd Soegevolumen Reel",
+        "filename": "sacredshop-cbd-soegevolumen-reel.md",
+        "path": "memory/sacredshop-cbd-soegevolumen-reel.md",
+        "tag": "md",
+        "size_kb": 3.2,
+        "modified": "2026-01-30T00:18:52.386107",
+        "preview": "# Sacred Shop - CBD Søgevolumen Realitet\n\n## Der er MASSIV efterspørgsel efter CBD!\n\nDu har ret - markedet er enormt. Her er de reelle tal:\n\n---\n\n## Månedlige søgninger i Danmark (estimat)\n",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop 1000 Kunder 6Md Plan",
+        "filename": "sacredshop-1000-kunder-6md-plan.md",
+        "path": "memory/sacredshop-1000-kunder-6md-plan.md",
+        "tag": "md",
+        "size_kb": 3.2,
+        "modified": "2026-01-30T00:16:43.421324",
+        "preview": "# Sacred Shop - 1000 kunder på 6 måneder (EKSTREM PLAN)\n\n## Mål: 10 → 1000 kunder på 6 måneder\n\n**Dette er 100x vækst på 6 måneder.**\n\nDet kræver enten:\n- 🤑 Massivt marketing budget (100.000+ kr/md)\n- 🚀 Viralt hit (lotteri-odds)\n- 🤝 Partner med stort brand/influencer",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop Vej Til 1000 Kunder",
+        "filename": "sacredshop-vej-til-1000-kunder.md",
+        "path": "memory/sacredshop-vej-til-1000-kunder.md",
+        "tag": "md",
+        "size_kb": 3.3,
+        "modified": "2026-01-30T00:15:02.044710",
+        "preview": "# Sacred Shop - Vej til 1000 KUNDER pr. måned\n\n## Mål: 1000 salg/md (ikke 1000 kr!)\n\nDette er **seriøs skalering**. Lad os se på hvad der kræves.\n\n---\n\n## Hvad kræves for 1000 kunder/md?\n",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop Vej Til 1000Kr",
+        "filename": "sacredshop-vej-til-1000kr.md",
+        "path": "memory/sacredshop-vej-til-1000kr.md",
+        "tag": "md",
+        "size_kb": 2.6,
+        "modified": "2026-01-30T00:14:23.964480",
+        "preview": "# Sacred Shop - Vej til 1000 kr/md\n\n## Nuværende situation\n- ~10 salg/md (estimeret)\n- Mål: 1000 kr/md i omsætning\n\n## Hvad kræves?\n\n### Scenarie 1: Lav margin (affiliate/dropshipping)\nHvis du tjener 50-100 kr pr. salg:",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      },
+      {
+        "name": "Sacredshop Konkurrenter",
+        "filename": "sacredshop-konkurrenter.md",
+        "path": "memory/sacredshop-konkurrenter.md",
+        "tag": "md",
+        "size_kb": 2.5,
+        "modified": "2026-01-29T22:14:44.715987",
+        "preview": "# Sacred Shop Konkurrentanalyse - CBD markedet\n\n## Konkurrenter\n\n| Konkurrent | SEO-score | Styrker | Svagheder |\n|------------|-----------|---------|-----------|\n| **Nordic Oil** | **7/10** ⭐ | Stærkt brand, \"verdensklasse\" positioning, 30 dages garanti, uddannelses-indhold (Hvad er CBD?), EU-certificeret | Stort brand, svær at konkurrere med på trust |\n| **Raw Organics** | **6/10** | Gode priser, kosttilskud udvidelse, 30 dages garanti, hurtig levering (1 dag) | Mere fokus på pris end brand |\n| **Endoca** | **6/10** | Meget teknisk viden (CBDa vs CBD), RAW koncept, educational content | Nørdet sprog, ikke mainstream |\n| **Pharmadrop** | **3/10** | Danskproduceret, 45% rabat på 1. ordre | Meget tynd side, dårlig title \"Forside -\" |",
+        "category": "🌿 Sacred Pet / Sacred Shop"
+      }
+    ],
+    "💼 Forretning": [
+      {
+        "name": "Mujaffa Brand Design",
+        "filename": "mujaffa-brand-design.md",
+        "path": "memory/mujaffa-brand-design.md",
+        "tag": "md",
+        "size_kb": 1.2,
+        "modified": "2026-01-31T09:26:15.377993",
+        "preview": "# Mujaffa Brand Design System\n\n## Farvepalet (Husket af Ghetto)\n\n| Rolle | Farve | Hex | Brug |\n|-------|-------|-----|------|\n| **Primary** | Varm Amber | `#ffa03c` | Knapper, CTA, links |\n| **Primary Light** | Lys Amber | `#ffb366` | Hover states |\n| **Accent** | Guld | `#ffd700` | Highlights, badges |\n| **Background** | Mørk Kaffe | `#0d0b08` | Side baggrund |",
+        "category": "💼 Forretning"
+      },
+      {
+        "name": "Trafik Kundeprognose Opdateret",
+        "filename": "trafik-kundeprognose-opdateret.md",
+        "path": "memory/trafik-kundeprognose-opdateret.md",
+        "tag": "md",
+        "size_kb": 3.7,
+        "modified": "2026-01-30T00:09:52.508847",
+        "preview": "# Trafik & Kundeprognose - Opdateret (Reelle Tal)\n\n## Nuværende situation\n\n| Firma | Nuværende | Mål (6-12 md) |\n|-------|-----------|---------------|\n| **MLflyt** | 400 henvendelser/md | +50-100% = 600-800/md |\n| **Sacred Shop** | Få kunder | +200-500% = 50-150 salg/md |\n| **AK Affaldsservice** | Få kunder | +300-800% = 30-80 henvendelser/md |\n",
+        "category": "💼 Forretning"
+      },
+      {
+        "name": "Mine Firmaer Master",
+        "filename": "mine-firmaer-master.md",
+        "path": "memory/mine-firmaer-master.md",
+        "tag": "md",
+        "size_kb": 2.7,
+        "modified": "2026-01-29T22:16:09.021499",
+        "preview": "# MLflyt + Sacred Shop - Master Reference\n\n## MLflyt (mlflyt.dk)\n**Niche:** Flytning (Aarhus, Skanderborg, Randers)\n**Unikt brand:** Girafbilerne\n**Erfaring:** 32+ år\n\n### SEO-status: 5/10\n- ❌ Title har typo: \"Aahrus\" skal være \"Aarhus\"\n- ✅ Trustpilot + Facebook reviews",
+        "category": "💼 Forretning"
+      },
+      {
+        "name": "Company Ideas",
+        "filename": "company-ideas.md",
+        "path": "memory/company-ideas.md",
+        "tag": "md",
+        "size_kb": 2.1,
+        "modified": "2026-01-29T21:19:08.769051",
+        "preview": "# Ideer til ML Flyt & Sacred Shop\n\n## ML Flyt (mlflyt.dk)\n\n### 1. Booking-automation\n- Online booking-system med kalender-integration\n- Automatisk prisberegning baseret på afstand/volumen\n- Kunder booker selv, du får notifikation\n\n### 2. Kunde-tracking",
+        "category": "💼 Forretning"
+      },
+      {
+        "name": "Companies",
+        "filename": "companies.md",
+        "path": "memory/companies.md",
+        "tag": "md",
+        "size_kb": 0.6,
+        "modified": "2026-01-29T21:10:26.056824",
+        "preview": "# Mujaffa's Firmaer & Forretninger\n\n## 1. ML Flyt\n- **Website:** https://mlflyt.dk\n- **Type:** Flytte- og logistikfirma\n- **Fokus:** Flytning, logistik, transport\n- **Status:** Aktiv\n\n## 2. Sacred Shop\n- **Website:** http://sacred-shop.com/",
+        "category": "💼 Forretning"
+      }
+    ],
+    "🚛 MLflyt": [
+      {
+        "name": "Seo Geo Vaerktojer",
+        "filename": "seo-geo-vaerktojer.md",
+        "path": "memory/seo-geo-vaerktojer.md",
+        "tag": "md",
+        "size_kb": 1.9,
+        "modified": "2026-02-02T20:38:42.837745",
+        "preview": "# SEO/GEO Værktøjer - Oversigt\n\n## GRATIS Værktøjer\n\n### 1. Google Search Console API\n- **Hvad:** Dine rigtige rankings, klik, visninger\n- **Værdi:** Se hvilke søgeord der faktisk bringer trafik\n- **Pris:** Gratis\n- **Integration:** Python + API\n",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Mlflyt Deploy Plan",
+        "filename": "mlflyt-deploy-plan.md",
+        "path": "memory/mlflyt-deploy-plan.md",
+        "tag": "md",
+        "size_kb": 1.1,
+        "modified": "2026-02-01T16:22:55.492680",
+        "preview": "# MLFlyt Geo-Sider - Deploy & Maintenance Plan\n\n**Dato:** 2026-02-01\n**Status:** Klar til deploy\n\n## ✅ Hvad er færdigt:\n1. 37 HTML geo-sider genereret\n2. Overview.json opdateret\n3. Auto-maintenance agent bygget og testet\n4. SEO monitor-system kørende",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Mlflyt Geo Rettelser 2026 02 01",
+        "filename": "mlflyt-geo-rettelser-2026-02-01.md",
+        "path": "memory/mlflyt-geo-rettelser-2026-02-01.md",
+        "tag": "md",
+        "size_kb": 2.6,
+        "modified": "2026-02-01T13:17:32.280377",
+        "preview": "# MLFlyt Geo-Sider - Rettelser der skal laves\n\n## Status\n✅ 37 sider genereret\n⚠️ Design og links skal gennemgås\n\n---\n\n## 1. Links der skal rettes\n",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Mlflyt Geo Batch 2026 02 01",
+        "filename": "mlflyt-geo-batch-2026-02-01.md",
+        "path": "memory/mlflyt-geo-batch-2026-02-01.md",
+        "tag": "md",
+        "size_kb": 1.2,
+        "modified": "2026-02-01T13:07:15.150650",
+        "preview": "# MLFlyt Geo-Pages - Status 2026-02-01\n\n## I gang: Batch-generering af 36 geo-sider\n\n**Baggrund:**\n- Har oprettet geo-landingsside struktur til MLFlyt (flyttefirma i Aarhus)\n- Template baseret på Risskov-side med unikt indhold per by\n- Sub-agent kører for at generere alle 36 resterende sider\n\n**Status:**",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Mlflyt Geo Status 2026 02 01",
+        "filename": "mlflyt-geo-status-2026-02-01.md",
+        "path": "memory/mlflyt-geo-status-2026-02-01.md",
+        "tag": "md",
+        "size_kb": 1.3,
+        "modified": "2026-02-01T12:50:23.770534",
+        "preview": "# MLflyt GEO Sider - Status 2026-02-01\n\n## ✅ Risskov færdig (Template)\n\nRisskov GEO-side er nu 10/10 SEO + 10/10 GEO optimeret med:\n\n- **Unikt lokal-afsnit**: Grenåvej, Veriparken, Veri Center, Bellevue Strand, Risskov Kirke\n- **AI-Q&A**: \"Er ML Flyt det bedste flyttefirma i Risskov?\"\n- **Pris-boks**: 699 kr/t (2 mand), 999 kr/t (3 mand), min 2 timer, weekend +25%\n- **Unik mini-case**: Familien Hansens flytning fra Grenåvej til Veriparken",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Seo Geo Agent Arkitektur",
+        "filename": "seo-geo-agent-arkitektur.md",
+        "path": "memory/seo-geo-agent-arkitektur.md",
+        "tag": "md",
+        "size_kb": 5.9,
+        "modified": "2026-02-01T01:26:52.211085",
+        "preview": "# 🎯 Den Ultimative SEO/GEO Agent - Arkitektur\n\n## Overblik\n```\n                    ┌─────────────────────────────────────┐\n                    │     🧠 SEO/GEO AGENT (Kimi)        │\n                    │     Orchestrator & Strategi        │\n                    └─────────────────────────────────────┘\n                                      │\n           ┌──────────────────────────┼──────────────────────────┐",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Mlflyt Lead Generator Status",
+        "filename": "mlflyt-lead-generator-status.md",
+        "path": "memory/mlflyt-lead-generator-status.md",
+        "tag": "md",
+        "size_kb": 0.7,
+        "modified": "2026-01-30T22:10:58.972908",
+        "preview": "# MLflyt Lead Generator Status\n\n## System Status\n- ✅ Bygget og klar\n- 📍 Placering: https://github.com/yazouriart-coder/mlflyt-lead-generator\n- 📁 Lokalt: ~/nightly-builds/2026-01-30/\n\n## For at bruge det (husk når du vil igang):\n1. Rediger `config.json` med:\n   - MLflyt telefonnummer",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Netlify Geo Strategy Master",
+        "filename": "netlify-geo-strategy-master.md",
+        "path": "memory/netlify-geo-strategy-master.md",
+        "tag": "md",
+        "size_kb": 5.5,
+        "modified": "2026-01-29T23:52:18.593789",
+        "preview": "# Netlify SEO/GEO Strategy - Master Plan\n\n## Koncept: \"Content Factory\" på Netlify\n**WordPress** = autoritet, trust, konvertering (penge-sider)\n**Netlify (subdomæne)** = skala, hastighed, SEO-power (content-sider)\n\n**Struktur:**\n```\ncontent.mlflyt.dk/          (eller guides.mlflyt.dk)\n├── flyttefirma-[by]/       (lokale sider)",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Mlflyt Konkurrenter",
+        "filename": "mlflyt-konkurrenter.md",
+        "path": "memory/mlflyt-konkurrenter.md",
+        "tag": "md",
+        "size_kb": 2.0,
+        "modified": "2026-01-29T22:14:44.710987",
+        "preview": "# MLflyt Konkurrentanalyse\n\n## Konkurrenter i Aarhus-området\n\n| Konkurrent | SEO-score | Styrker | Svagheder |\n|------------|-----------|---------|-----------|\n| **Holger Danske** | **8/10** ⭐ | 40+ år erfaring, 10.000+ flytninger, 4.9 Trustpilot, \"#1\" i title | Landsdækket (ikke lokal Aarhus-fokus) |\n| **Aarhus Flytteservice** | **6/10** | 40+ år, \"familieejet\", personlig tilgang | Tyndt indhold, ingen reviews synlige |\n| **AKL Flyt** | **5/10** | 4.8 stjerner i title, lokalt Aarhus-fokus | Meget tynd side, intet unikt |\n| **Jysk Flyttefirma** | **5/10** | 3 FlyttePakker (koncept), handyman-service | Intet lokalt fokus, \"laveste priser\" (priskrig) |",
+        "category": "🚛 MLflyt"
+      },
+      {
+        "name": "Geo Seo Knowledge",
+        "filename": "geo-seo-knowledge.md",
+        "path": "memory/geo-seo-knowledge.md",
+        "tag": "md",
+        "size_kb": 3.0,
+        "modified": "2026-01-29T22:02:15.983559",
+        "preview": "# GEO & SEO - Knowledge Base\n\n## SEO (Search Engine Optimization)\n\n### Kerneprincipper\n- **On-page SEO**: Titler, meta descriptions, headings (H1-H6), URL-struktur, intern linking, alt-tags på billeder\n- **Off-page SEO**: Backlinks, brand mentions, social signals\n- **Technical SEO**: Site speed, mobile-friendliness, crawlability, structured data (Schema.org), XML sitemaps, Core Web Vitals\n- **Content SEO**: Keyword research, søgeintention, E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness), fresh content\n",
+        "category": "🚛 MLflyt"
+      }
+    ],
+    "📈 Trading": [
+      {
+        "name": "Trading Bot Status 2026 01 30",
+        "filename": "trading-bot-status-2026-01-30.md",
+        "path": "memory/trading-bot-status-2026-01-30.md",
+        "tag": "md",
+        "size_kb": 1.5,
+        "modified": "2026-01-30T07:13:34.475619",
+        "preview": "# Trading Bot Status - 30. januar 2026\n\n## Performance Summary\n\n| Metric | Value |\n|--------|-------|\n| **Start capital** | $10,000 |\n| **Current capital** | $19,019.69 |\n| **Total return** | +90.2% |\n| **Period** | 27. jan - 30. jan 2026 (3 dage) |",
+        "category": "📈 Trading"
+      }
+    ]
+  }
+}
