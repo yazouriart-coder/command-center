@@ -215,12 +215,59 @@ if (typeof processCommand !== 'undefined') {
   processCommand = processCommandLive;
 }
 
+// ── Ghetto Status → Bot Face ──
+let ghettoStatus = {};
+
+async function fetchGhettoStatus() {
+  try {
+    const response = await fetch('data/ghetto-status.json');
+    ghettoStatus = await response.json();
+    updateBotFace();
+    console.log('🤖 Ghetto status:', ghettoStatus.mood, '-', ghettoStatus.task);
+  } catch (error) {
+    console.log('⚠️ Ghetto status ikke tilgængeligt:', error);
+  }
+}
+
+function updateBotFace() {
+  if (!ghettoStatus.mood) return;
+  
+  // Brug setBotMood fra index.html (allerede defineret)
+  if (typeof setBotMood === 'function') {
+    setBotMood(ghettoStatus.mood);
+  }
+  
+  // Opdater status tekst
+  const label = document.getElementById('botStatusLabel');
+  const task = document.getElementById('botStatusTask');
+  if (label && ghettoStatus.status) label.textContent = ghettoStatus.status;
+  if (task && ghettoStatus.task) task.textContent = ghettoStatus.task;
+  
+  // Opdater historik i notifikationer
+  if (ghettoStatus.history && ghettoStatus.history.length) {
+    const notifList = document.getElementById('notifList');
+    if (notifList) {
+      const moodToType = { working: 'info', thinking: 'warn', happy: 'success', idle: 'info' };
+      const histHtml = ghettoStatus.history.map(h => `
+        <div class="notif-item">
+          <span class="notif-dot ${moodToType[h.mood] || 'info'}"></span>
+          <span class="notif-text"><strong>Ghetto:</strong> ${h.action}</span>
+          <span class="notif-time">${h.time}</span>
+        </div>
+      `).join('');
+      notifList.innerHTML = histHtml;
+    }
+  }
+}
+
 // ── Start alt ──
 fetchLiveData();
 fetchDocLibrary();
+fetchGhettoStatus();
 
-// Refresh hvert 30. sekund
+// Refresh intervaller
 setInterval(fetchLiveData, 30000);
 setInterval(fetchDocLibrary, 60000);
+setInterval(fetchGhettoStatus, 10000);  // Tjek hvert 10. sekund for hurtig reaktion
 
-console.log('🔌 Live data + dokumentbibliotek connector loaded!');
+console.log('🔌 Live data + dokumentbibliotek + Ghetto face connector loaded!');
