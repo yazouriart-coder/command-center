@@ -35,8 +35,9 @@
   --radius-sm:8px;
 }
 html,body{
-  height:100%;font-family:var(--font);background:var(--bg-primary);
-  color:var(--text-primary);overflow-x:hidden;
+  height:100%;font-family:var(--font);background:#0a0e1a;
+  background:var(--bg-primary);color:#e8eaf6;color:var(--text-primary);
+  overflow-x:hidden;-webkit-text-size-adjust:100%;
 }
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg-secondary)}
@@ -539,24 +540,27 @@ html,body{
   .main{grid-template-columns:240px 1fr 280px}
 }
 @media(max-width:900px){
-  html,body{overflow:auto !important;height:auto !important}
-  .app{height:auto !important;min-height:100vh;grid-template-rows:56px auto}
+  html,body{overflow-y:auto !important;overflow-x:hidden !important;height:auto !important;min-height:100% !important;background:#0a0e1a !important}
+  .app{display:block !important;height:auto !important;min-height:100vh;background:#0a0e1a}
   .main{
-    grid-template-columns:1fr !important;
-    grid-template-rows:auto !important;
-    overflow:auto !important;
+    display:block !important;
+    grid-template-columns:none !important;
+    grid-template-rows:none !important;
+    overflow:visible !important;
     height:auto !important;
-    padding:8px;gap:8px;
+    padding:10px;background:#0a0e1a;
   }
   .left-col,.center-col,.right-col{
+    display:block !important;
     grid-row:auto !important;
     overflow:visible !important;
+    margin-bottom:15px;
   }
   .left-col{order:2}
   .center-col{order:1}
   .right-col{order:3}
-  .trading-panel{height:250px !important}
-  .chat-panel{min-height:300px;max-height:400px}
+  .trading-panel{height:200px !important}
+  .chat-panel{min-height:250px;height:auto !important}
   .bot-face-card{padding:10px}
   .bot-face-wrapper{width:80px;height:80px}
   .bot-face{width:80px;height:80px}
@@ -566,9 +570,9 @@ html,body{
   .bot-mouth{bottom:22px}
   .header-center{display:none}
   .header-time{display:none}
-  .documents-panel{max-height:300px}
-  .agents-panel{max-height:300px}
-  .quick-grid{grid-template-columns:1fr}
+  .documents-panel{max-height:300px;min-height:200px}
+  .agents-panel{max-height:250px}
+  .quick-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
