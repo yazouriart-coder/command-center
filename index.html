@@ -820,21 +820,27 @@ html,body{
         </div>
         <div class="chat-messages" id="chatMessages">
           <div class="chat-msg bot">
-            <div class="msg-name">ClawBot</div>
-            Hej Mujaffa! Jeg er klar til at hjaelpe. Hvad skal vi arbejde pa i dag?
+            <div class="msg-name">Ghetto 🤖</div>
+            Hej Mujaffa! Jeg er online og klar. Skriv her eller klik "Åbn Telegram" for direkte besked til mig!
           </div>
           <div class="chat-msg bot">
-            <div class="msg-name">ClawBot</div>
-            Tip: Brug @projekt for at vaelge kontekst. F.eks. <strong>@trading status</strong> eller <strong>@seo rapport</strong>
+            <div class="msg-name">Ghetto 💡</div>
+            <strong>Direkte linje:</strong> Skriv besked her ➜ jeg ser den ➜ svarer i Telegram. Prøv: <strong>@trading</strong>, <strong>@mlflyt</strong> eller <strong>@help</strong>
           </div>
         </div>
         <div class="chat-typing" id="chatTyping">
           <span></span><span></span><span></span>
         </div>
         <div class="chat-input-area">
-          <input type="text" class="chat-input" id="chatInput" placeholder="Skriv en kommando... (@trading, @seo, @mlflyt)" />
-          <button class="chat-send" id="chatSend">
+          <input type="text" class="chat-input" id="chatInput" placeholder="Skriv til Ghetto..." />
+          <button class="chat-send" id="chatSend" onclick="sendToGhetto()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <div style="padding:8px 12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center">
+          <span style="font-size:10px;color:var(--text-dim)">💬 Direkte linje til Ghetto:</span>
+          <button onclick="openTelegram()" style="padding:4px 12px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:11px;font-weight:600;cursor:pointer">
+            Åbn Telegram
           </button>
         </div>
       </div>
@@ -1845,6 +1851,52 @@ function showToast(message,type='info'){
   container.appendChild(toast);
   
   setTimeout(()=>toast.remove(),5000);
+}
+
+// ── Send to Ghetto ──
+function sendToGhetto(){
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if(!msg) return;
+  
+  // Add to chat
+  addChatMsg(msg, true);
+  input.value = '';
+  
+  // Show typing
+  document.getElementById('chatTyping').classList.add('show');
+  
+  // Simulate response
+  setTimeout(() => {
+    document.getElementById('chatTyping').classList.remove('show');
+    
+    const responses = {
+      '@trading': '📈 Jeg henter live trading data...',
+      '@mlflyt': '🚛 MLflyt status: 47 GEO sider, 3 nye leads',
+      '@sacred': '🌿 Sacred Pet er klar til deploy!',
+      '@help': '💡 Kommandoer: @trading, @mlflyt, @sacred, eller skriv direkte til mig på Telegram!'
+    };
+    
+    let response = '💬 Jeg har modtaget din besked! Skriv til mig direkte på Telegram for hurtigere svar.';
+    for(const key in responses) {
+      if(msg.toLowerCase().includes(key)) {
+        response = responses[key];
+        break;
+      }
+    }
+    
+    addChatMsg(response, false);
+    
+    // Also open Telegram option
+    showToast('💡 Tip: Klik "Åbn Telegram" for direkte besked til mig!', 'info');
+  }, 1000);
+}
+
+function openTelegram(){
+  const msg = document.getElementById('chatInput').value.trim() || 'Hej Ghetto! 👋';
+  const url = `https://t.me/Mujaffa1?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+  showToast('✅ Telegram åbnet!', 'success');
 }
 
 // ── Quick Actions ──
