@@ -179,6 +179,9 @@ function updateDocPanel() {
   
   list.innerHTML = html;
   
+  // Opdater også Docs view hvis det findes
+  updateDocsViewFull();
+  
   // Opdater tæller
   const countEl = document.getElementById('docCount');
   if (countEl) countEl.textContent = totalCount;
@@ -319,5 +322,84 @@ fetchGhettoStatus();
 setInterval(fetchLiveData, 30000);
 setInterval(fetchDocLibrary, 60000);
 setInterval(fetchGhettoStatus, 10000);  // Tjek hvert 10. sekund for hurtig reaktion
+
+// ── Docs View (Full) ──
+function updateDocsViewFull() {
+  if (!docLibrary.library) return;
+  
+  const list = document.getElementById('docListFull');
+  if (!list) return;
+  
+  let totalCount = 0;
+  let html = '';
+  
+  const catOrder = [
+    '🚛 MLflyt', '🌿 Sacred Pet / Sacred Shop', '🗑️ AK Affaldsservice',
+    '📈 Trading', '🔍 SEO & Marketing', '💼 Forretning',
+    '🛠️ Tools & Systemer', '🧠 Profil & System', '📅 Daglige Logs'
+  ];
+  
+  catOrder.forEach(cat => {
+    const items = docLibrary.library[cat];
+    if (!items || !items.length) return;
+    totalCount += items.length;
+    
+    html += `
+    <div class="doc-folder">
+      <div class="doc-folder-name" onclick="toggleFolder(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        ${cat} <span style="opacity:.5;font-size:9px;margin-left:4px">(${items.length})</span>
+      </div>
+      <div class="doc-folder-items">
+        ${items.map(doc => `
+          <div class="doc-item" onclick="openDocFull('${doc.name.replace(/'/g,"\\'")}','${doc.path}','${(doc.preview || '').replace(/'/g,"\\'").replace(/\n/g,' ').substring(0,200)}')">
+            <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ${doc.name}
+            <span class="doc-tag tag-${doc.tag}">${doc.tag.toUpperCase()}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  });
+  
+  list.innerHTML = html;
+  
+  // Opdater tæller
+  const countEl = document.getElementById('docCountFull');
+  if (countEl) countEl.textContent = totalCount;
+  
+  // Søgning
+  const searchInput = document.getElementById('docSearchFull');
+  if (searchInput) {
+    searchInput.oninput = function(e) {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('#docListFull .doc-item').forEach(item => {
+        const name = item.textContent.toLowerCase();
+        item.style.display = (!q || name.includes(q)) ? '' : 'none';
+      });
+      document.querySelectorAll('#docListFull .doc-folder').forEach(folder => {
+        const visibleItems = folder.querySelectorAll('.doc-item:not([style*="display: none"])');
+        folder.style.display = visibleItems.length ? '' : 'none';
+      });
+    };
+  }
+}
+
+function openDocFull(name, path, preview) {
+  const previewEl = document.getElementById('docPreviewFull');
+  if (!previewEl) return;
+  
+  document.querySelectorAll('#docListFull .doc-item').forEach(d => d.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  
+  previewEl.innerHTML = `
+    <div style="margin-bottom:20px">
+      <h2 style="font-size:20px;margin-bottom:8px">${name}</h2>
+      <p style="color:var(--text-dim);font-size:12px">📁 ${path}</p>
+    </div>
+    <hr style="border-color:var(--border);margin:16px 0">
+    <pre style="white-space:pre-wrap;font-size:13px;line-height:1.7;color:var(--text-secondary)">${preview || '(Ingen preview)'}</pre>
+  `;
+}
 
 console.log('🔌 Live data + dokumentbibliotek + Ghetto face connector loaded!');
