@@ -707,6 +707,7 @@ html,body{
       <div class="header-tab" data-view="projects">Projekter</div>
       <div class="header-tab" data-view="agents">Agenter</div>
       <div class="header-tab" data-view="docs">Docs</div>
+      <div class="header-tab" data-view="system">System</div>
     </div>
     <div class="header-right">
       <div class="header-time" id="headerTime">--:--:--</div>
@@ -1100,6 +1101,141 @@ html,body{
     </div>
   </div>
   </div><!-- /view-docs -->
+
+  <!-- ═══ SYSTEM/API VIEW ═══ -->
+  <div id="view-system" class="view-section">
+  <div class="main" style="grid-template-columns:1fr;grid-template-rows:1fr;height:calc(100vh - 56px);padding:20px;overflow-y:auto">
+    
+    <div style="max-width:1000px;margin:0 auto;width:100%">
+      <div style="font-size:24px;font-weight:700;margin-bottom:20px">🔌 System Status & API'er</div>
+      
+      <!-- API Status Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:30px">
+        
+        <!-- Bybit API -->
+        <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;border-left:4px solid var(--green)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:28px">📈</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">Bybit API</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Trading Bot</div>
+            </div>
+            <span style="margin-left:auto;padding:3px 10px;background:var(--green-glow);color:var(--green);border-radius:10px;font-size:10px;font-weight:600">ONLINE</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">Futures Trading • $297.95 kapital</div>
+          <div style="height:3px;background:var(--bg-secondary);border-radius:2px">
+            <div style="width:100%;height:100%;background:var(--green);border-radius:2px"></div>
+          </div>
+        </div>
+        
+        <!-- Binance Price API -->
+        <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;border-left:4px solid var(--blue)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:28px">💰</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">Binance API</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Price Feed</div>
+            </div>
+            <span style="margin-left:auto;padding:3px 10px;background:var(--blue-glow);color:var(--blue);border-radius:10px;font-size:10px;font-weight:600">ONLINE</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">BTC/USDT • ETH/USDT priser</div>
+          <div style="height:3px;background:var(--bg-secondary);border-radius:2px">
+            <div style="width:100%;height:100%;background:var(--blue);border-radius:2px"></div>
+          </div>
+        </div>
+        
+        <!-- GitHub API -->
+        <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;border-left:4px solid var(--accent)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:28px">🐙</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">GitHub API</div>
+              <div style="font-size:11px;color:var(--text-secondary)">yazouriart-coder</div>
+            </div>
+            <span style="margin-left:auto;padding:3px 10px;background:var(--accent-glow);color:var(--accent);border-radius:10px;font-size:10px;font-weight:600">ONLINE</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">Repos • Deployments • Command Center</div>
+          <div style="height:3px;background:var(--bg-secondary);border-radius:2px">
+            <div style="width:100%;height:100%;background:var(--accent);border-radius:2px"></div>
+          </div>
+        </div>
+        
+        <!-- Kimi API -->
+        <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;border-left:4px solid var(--yellow)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:28px">🧠</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">Kimi API</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Ghetto AI</div>
+            </div>
+            <span style="margin-left:auto;padding:3px 10px;background:var(--yellow-glow);color:var(--yellow);border-radius:10px;font-size:10px;font-weight:600">ONLINE</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">K2.5 • 262K context • Text generation</div>
+          <div style="height:3px;background:var(--bg-secondary);border-radius:2px">
+            <div style="width:92%;height:100%;background:var(--yellow);border-radius:2px"></div>
+          </div>
+        </div>
+        
+        <!-- Telegram API -->
+        <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;border-left:4px solid var(--blue)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:28px">✈️</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">Telegram API</div>
+              <div style="font-size:11px;color:var(--text-secondary)">@Mujaffa1</div>
+            </div>
+            <span style="margin-left:auto;padding:3px 10px;background:var(--blue-glow);color:var(--blue);border-radius:10px;font-size:10px;font-weight:600">ONLINE</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">Beskeder • Notifikationer</div>
+          <div style="height:3px;background:var(--bg-secondary);border-radius:2px">
+            <div style="width:100%;height:100%;background:var(--blue);border-radius:2px"></div>
+          </div>
+        </div>
+        
+        <!-- GitHub Pages -->
+        <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;border-left:4px solid var(--green)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:28px">🌐</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">GitHub Pages</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Hosting</div>
+            </div>
+            <span style="margin-left:auto;padding:3px 10px;background:var(--green-glow);color:var(--green);border-radius:10px;font-size:10px;font-weight:600">ONLINE</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px">Command Center • SSL • CDN</div>
+          <div style="height:3px;background:var(--bg-secondary);border-radius:2px">
+            <div style="width:100%;height:100%;background:var(--green);border-radius:2px"></div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- System Stats -->
+      <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:20px">
+        <div style="font-size:16px;font-weight:700;margin-bottom:16px">📊 System Overview</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+          <div style="text-align:center;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm)">
+            <div style="font-size:24px;font-weight:700;color:var(--green)">6/6</div>
+            <div style="font-size:11px;color:var(--text-secondary)">API'er Online</div>
+          </div>
+          <div style="text-align:center;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm)">
+            <div style="font-size:24px;font-weight:700;color:var(--accent)">2</div>
+            <div style="font-size:11px;color:var(--text-secondary)">Åbne Positioner</div>
+          </div>
+          <div style="text-align:center;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm)">
+            <div style="font-size:24px;font-weight:700;color:var(--blue)">79</div>
+            <div style="font-size:11px;color:var(--text-secondary)">Dokumenter</div>
+          </div>
+          <div style="text-align:center;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm)">
+            <div style="font-size:24px;font-weight:700;color:var(--yellow)">4</div>
+            <div style="font-size:11px;color:var(--text-secondary)">Agenter</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div><!-- /view-system -->
 
 </div><!-- /app -->
 
@@ -1665,9 +1801,9 @@ document.addEventListener('keydown',e=>{
     e.preventDefault();
     openNoteModal();
   }
-  // 1-5 = Switch views
-  if(e.key>='1'&&e.key<='5'&&!e.ctrlKey){
-    const views=['dashboard','trading','projects','agents','docs'];
+  // 1-6 = Switch views
+  if(e.key>='1'&&e.key<='6'&&!e.ctrlKey){
+    const views=['dashboard','trading','projects','agents','docs','system'];
     const idx=parseInt(e.key)-1;
     if(views[idx]) switchView(views[idx]);
   }
@@ -1749,7 +1885,7 @@ setTimeout(()=>{
   <div class="kb-modal">
     <div class="kb-title">⌨️ Keyboard Shortcuts</div>
     <div class="kb-list">
-      <div class="kb-item"><span>Skift view</span><span><span class="kb-key">1</span><span class="kb-key">2</span><span class="kb-key">3</span><span class="kb-key">4</span><span class="kb-key">5</span></span></div>
+      <div class="kb-item"><span>Skift view</span><span><span class="kb-key">1</span><span class="kb-key">2</span><span class="kb-key">3</span><span class="kb-key">4</span><span class="kb-key">5</span><span class="kb-key">6</span></span></div>
       <div class="kb-item"><span>Ny note</span><span class="kb-key">n</span></div>
       <div class="kb-item"><span>Vis shortcuts</span><span class="kb-key">?</span></div>
       <div class="kb-item"><span>Luk modal</span><span class="kb-key">esc</span></div>
