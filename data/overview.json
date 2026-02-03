@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-02-02T23:03:24.926178",
+  "last_updated": "2026-02-03T00:19:02.455932",
   "projects": {
     "mlflyt": {
       "project": "MLflyt",
-      "last_updated": "2026-02-02T23:03:24.924976",
+      "last_updated": "2026-02-03T00:19:02.454033",
       "geo_sider": {
         "total": 100,
         "faerdige": 0,
@@ -21,7 +21,7 @@
     },
     "sacred": {
       "project": "Sacred Pet",
-      "last_updated": "2026-02-02T23:03:24.925280",
+      "last_updated": "2026-02-03T00:19:02.454474",
       "landing_page": "100%",
       "status": "klar_til_deploy",
       "filer": [
@@ -40,7 +40,7 @@
     },
     "trading": {
       "project": "Trading Bot",
-      "last_updated": "2026-02-02T23:03:24.925652",
+      "last_updated": "2026-02-03T00:19:02.454991",
       "mode": "READ_ONLY",
       "warning": "\ud83d\udd12 Jeg kan KUN l\u00e6se, ikke r\u00f8re!",
       "kapital": 297.95,
@@ -61,8 +61,8 @@
           "status": "OPEN"
         }
       ],
-      "dagens_pnl": "+$1,247",
-      "win_rate": "68.5%"
+      "dagens_pnl": "+0.00",
+      "win_rate": "0%"
     }
   }
 }
