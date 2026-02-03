@@ -42,7 +42,57 @@ function updateUIWithLiveData() {
     if (statWin) statWin.textContent = t.win_rate;
     const statPos = document.getElementById('statPos');
     if (statPos) statPos.textContent = t.aabne_positioner;
+    
+    // Live trading view stats
+    const statPnlLive = document.getElementById('statPnlLive');
+    if (statPnlLive) statPnlLive.textContent = t.dagens_pnl;
+    const statWinLive = document.getElementById('statWinLive');
+    if (statWinLive) statWinLive.textContent = t.win_rate;
+    const statPosLive = document.getElementById('statPosLive');
+    if (statPosLive) statPosLive.textContent = t.aabne_positioner;
+    const statCapLive = document.getElementById('statCapLive');
+    if (statCapLive) statCapLive.textContent = '$' + t.kapital;
   }
+  
+  // Agenter
+  if (liveData.agents) {
+    updateAgentsView(liveData.agents);
+  }
+}
+
+// ── Opdater Agenter view ──
+function updateAgentsView(agents) {
+  const grid = document.getElementById('agentsGrid');
+  if (!grid || !agents) return;
+  
+  const colorMap = {
+    'green': ['var(--green-glow)', 'var(--green)', 'AKTIV'],
+    'blue': ['var(--blue-glow)', 'var(--blue)', 'SYNC'],
+    'yellow': ['var(--yellow-glow)', 'var(--yellow)', 'TÆNKER'],
+    'accent': ['var(--accent-glow)', 'var(--accent)', 'ONLINE'],
+    'dim': ['rgba(100,100,140,.2)', 'var(--text-dim)', 'IDLE']
+  };
+  
+  grid.innerHTML = agents.map(a => {
+    const [bg, fg, defaultStatus] = colorMap[a.color] || colorMap['accent'];
+    const statusText = a.status === 'active' ? defaultStatus : (a.status === 'idle' ? 'IDLE' : a.status.toUpperCase());
+    return `
+      <div class="agent-card" style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;opacity:${a.status==='idle'?0.6:1}">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div style="width:48px;height:48px;border-radius:12px;background:${bg};border:1px solid ${fg}30;display:flex;align-items:center;justify-content:center;font-size:24px">${a.emoji}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${a.name}</div>
+            <div style="font-size:11px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${a.task}</div>
+          </div>
+          <span style="padding:2px 8px;background:${bg};color:${fg};border-radius:8px;font-size:9px;font-weight:600;flex-shrink:0">${statusText}</span>
+        </div>
+        <div style="height:4px;background:var(--bg-secondary);border-radius:2px;overflow:hidden">
+          <div style="width:${a.progress}%;height:100%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:2px;transition:width 0.5s"></div>
+        </div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:4px;text-align:right">${a.time}</div>
+      </div>
+    `;
+  }).join('');
 }
 
 // ── Opdater dokument-panelet med rigtige filer ──

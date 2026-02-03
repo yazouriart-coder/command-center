@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-02-03T00:19:02.455932",
+  "last_updated": "2026-02-03T00:22:48.621679",
   "projects": {
     "mlflyt": {
       "project": "MLflyt",
-      "last_updated": "2026-02-03T00:19:02.454033",
+      "last_updated": "2026-02-03T00:22:48.580674",
       "geo_sider": {
         "total": 100,
         "faerdige": 0,
@@ -21,7 +21,7 @@
     },
     "sacred": {
       "project": "Sacred Pet",
-      "last_updated": "2026-02-03T00:19:02.454474",
+      "last_updated": "2026-02-03T00:22:48.581082",
       "landing_page": "100%",
       "status": "klar_til_deploy",
       "filer": [
@@ -40,7 +40,7 @@
     },
     "trading": {
       "project": "Trading Bot",
-      "last_updated": "2026-02-03T00:19:02.454991",
+      "last_updated": "2026-02-03T00:22:48.581499",
       "mode": "READ_ONLY",
       "warning": "\ud83d\udd12 Jeg kan KUN l\u00e6se, ikke r\u00f8re!",
       "kapital": 297.95,
@@ -64,5 +64,43 @@
       "dagens_pnl": "+0.00",
       "win_rate": "0%"
     }
-  }
+  },
+  "agents": [
+    {
+      "name": "Trading Bot",
+      "emoji": "\ud83d\udcc8",
+      "status": "active",
+      "task": "Overv\u00e5ger BTC/ETH - 2 \u00e5bne positioner",
+      "progress": 100,
+      "time": "Live",
+      "color": "green"
+    },
+    {
+      "name": "Ghetto AI",
+      "emoji": "\ud83e\udd16",
+      "status": "active",
+      "task": "Hj\u00e6lper Mujaffa - bygger Command Center",
+      "progress": 85,
+      "time": "Nu",
+      "color": "accent"
+    },
+    {
+      "name": "Data Connector",
+      "emoji": "\ud83d\udd0c",
+      "status": "active",
+      "task": "Sync data hvert 5. minut",
+      "progress": 100,
+      "time": "Auto",
+      "color": "blue"
+    },
+    {
+      "name": "System Monitor",
+      "emoji": "\ud83d\udee1\ufe0f",
+      "status": "active",
+      "task": "Tjekker server status",
+      "progress": 92,
+      "time": "Live",
+      "color": "green"
+    }
+  ]
 }
