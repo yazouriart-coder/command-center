@@ -535,6 +535,46 @@ html,body{
 .glow-accent{box-shadow:0 0 20px var(--accent-glow)}
 .glow-green{box-shadow:0 0 20px var(--green-glow)}
 
+/* ═══════════════════════════════════════════════
+   VIEW SECTIONS - Tab navigation
+   ═══════════════════════════════════════════════ */
+.view-section{display:none}
+.view-section.active{display:block}
+.view-section .main{display:grid;grid-template-columns:280px 1fr 320px;grid-template-rows:auto 1fr;height:calc(100vh - 56px)}
+
+/* Dashboard view (default) */
+#view-dashboard .left-col{grid-row:1/3}
+#view-dashboard .center-col{grid-row:1/3}
+#view-dashboard .right-col{grid-row:1/3}
+
+/* Trading view - full width chart */
+#view-trading .main{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+#view-trading .trading-panel{height:60vh}
+#view-trading .trading-stats{grid-template-columns:repeat(6,1fr)}
+#view-trading .trading-positions{margin-top:10px;background:var(--bg-card);border-radius:var(--radius);padding:12px;border:1px solid var(--border)}
+
+/* Projects view */
+#view-projects .main{grid-template-columns:300px 1fr;grid-template-rows:1fr}
+#view-projects .left-col{display:none}
+#view-projects .center-col{grid-row:1}
+#view-projects .right-col{display:none}
+#view-projects .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;padding:12px;overflow-y:auto}
+#view-projects .project-card{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;transition:.2s}
+#view-projects .project-card:hover{border-color:var(--accent)}
+#view-projects .project-icon{font-size:24px;margin-bottom:8px}
+#view-projects .project-name{font-size:14px;font-weight:700;margin-bottom:4px}
+#view-projects .project-status{font-size:11px;color:var(--text-secondary)}
+
+/* Agents view */
+#view-agents .main{grid-template-columns:1fr;grid-template-rows:1fr}
+#view-agents .left-col,#view-agents .right-col{display:none}
+#view-agents .center-col{grid-row:1}
+#view-agents .agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px;padding:12px;overflow-y:auto}
+#view-agents .agent-card{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px}
+#view-agents .agent-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+#view-agents .agent-emoji{font-size:24px}
+#view-agents .agent-title{font-size:14px;font-weight:700}
+
 /* Responsive */
 @media(max-width:1200px){
   .main{grid-template-columns:240px 1fr 280px}
@@ -612,7 +652,8 @@ html,body{
     </div>
   </header>
 
-  <!-- ═══ MAIN GRID ═══ -->
+  <!-- ═══ VIEWS ═══ -->
+  <div id="view-dashboard" class="view-section active">
   <div class="main">
 
     <!-- ═══ LEFT COLUMN ═══ -->
@@ -795,7 +836,178 @@ html,body{
     </div>
 
   </div>
-</div>
+  </div><!-- /view-dashboard -->
+
+  <!-- ═══ TRADING VIEW ═══ -->
+  <div id="view-trading" class="view-section">
+  <div class="main">
+    <div class="center-col" style="grid-column:1/-1;grid-row:1/-1">
+      <div class="trading-panel" style="height:65vh">
+        <div class="trading-header">
+          <div class="trading-pair">
+            <div class="trading-pair-name">BTC/USDT</div>
+            <div class="trading-pair-price" id="tradePriceLive">$97,432.50</div>
+            <div class="trading-pair-change up" id="tradeChangeLive">+2.34%</div>
+          </div>
+          <div class="trading-controls">
+            <div class="trading-tf" data-tf="1m">1m</div>
+            <div class="trading-tf" data-tf="5m">5m</div>
+            <div class="trading-tf active" data-tf="15m">15m</div>
+            <div class="trading-tf" data-tf="1h">1H</div>
+            <div class="trading-tf" data-tf="4h">4H</div>
+            <div class="trading-tf" data-tf="1d">1D</div>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="tradingChartLive"></canvas>
+        </div>
+        <div class="trading-stats">
+          <div class="stat-item"><div class="stat-label">P&L i dag</div><div class="stat-value green" id="statPnlLive">+$0.00</div></div>
+          <div class="stat-item"><div class="stat-label">Win Rate</div><div class="stat-value blue" id="statWinLive">0%</div></div>
+          <div class="stat-item"><div class="stat-label">Positioner</div><div class="stat-value" id="statPosLive">2</div></div>
+          <div class="stat-item"><div class="stat-label">Kapital</div><div class="stat-value" id="statCapLive">$297.95</div></div>
+          <div class="stat-item"><div class="stat-label">Exchange</div><div class="stat-value blue">Bybit</div></div>
+          <div class="stat-item"><div class="stat-label">Mode</div><div class="stat-value">Futures</div></div>
+        </div>
+      </div>
+      <div class="trading-positions" style="background:var(--bg-card);border-radius:var(--radius);padding:16px;border:1px solid var(--border);margin-top:10px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">📊 Åbne Positioner (LIVE)</div>
+        <div id="positionsList" style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;padding:10px;background:var(--bg-secondary);border-radius:var(--radius-sm);border-left:3px solid var(--red)">
+            <span style="font-weight:600">BTCUSDT SHORT</span>
+            <span style="color:var(--text-secondary)">Entry: $79,559.40</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px;background:var(--bg-secondary);border-radius:var(--radius-sm);border-left:3px solid var(--red)">
+            <span style="font-weight:600">ETHUSDT SHORT</span>
+            <span style="color:var(--text-secondary)">Entry: $2,397.11</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- /view-trading -->
+
+  <!-- ═══ PROJECTS VIEW ═══ -->
+  <div id="view-projects" class="view-section">
+  <div class="main">
+    <div class="left-col">
+      <div class="documents-panel" style="height:calc(100vh - 76px)">
+        <div class="panel-header">
+          <div class="panel-title">📁 Projekter</div>
+          <span class="panel-badge" id="projectCount">4</span>
+        </div>
+        <div class="panel-search">
+          <input type="text" placeholder="Søg projekt..." id="projectSearch"/>
+        </div>
+        <div class="doc-list" id="projectList" style="padding:8px">
+          <div class="doc-item active" data-project="mlflyt" onclick="selectProject('mlflyt')">
+            <span style="margin-right:8px">🚛</span>MLflyt
+          </div>
+          <div class="doc-item" data-project="sacred" onclick="selectProject('sacred')">
+            <span style="margin-right:8px">🌿</span>Sacred Pet
+          </div>
+          <div class="doc-item" data-project="akaffald" onclick="selectProject('akaffald')">
+            <span style="margin-right:8px">🗑️</span>AK Affald
+          </div>
+          <div class="doc-item" data-project="trading" onclick="selectProject('trading')">
+            <span style="margin-right:8px">📈</span>Trading Bot
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="center-col" style="padding:10px;overflow-y:auto">
+      <div id="projectDetail" style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:20px;min-height:300px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <span style="font-size:32px">🚛</span>
+          <div>
+            <div style="font-size:18px;font-weight:700">MLflyt</div>
+            <div style="font-size:12px;color:var(--text-secondary)">Flyttefirma · SEO · 47 GEO sider</div>
+          </div>
+          <span style="margin-left:auto;padding:4px 12px;background:var(--green-glow);color:var(--green);border-radius:12px;font-size:11px;font-weight:600">Aktiv</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+          <div style="background:var(--bg-secondary);padding:12px;border-radius:var(--radius-sm);text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--accent)">47</div>
+            <div style="font-size:10px;color:var(--text-secondary)">GEO Sider</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:12px;border-radius:var(--radius-sm);text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--green)">3</div>
+            <div style="font-size:10px;color:var(--text-secondary)">Nye Leads</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:12px;border-radius:var(--radius-sm);text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--blue)">#8</div>
+            <div style="font-size:10px;color:var(--text-secondary)">Ranking Aarhus</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+          <p style="margin-bottom:12px"><strong>Sidste aktivitet:</strong> 3 nye GEO sider genereret til Skanderborg-området</p>
+          <p><strong>Næste skridt:</strong> Deploy resterende 53 sider, optimer meta descriptions</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- /view-projects -->
+
+  <!-- ═══ AGENTS VIEW ═══ -->
+  <div id="view-agents" class="view-section">
+  <div class="main">
+    <div class="center-col" style="padding:10px;overflow-y:auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px" id="agentsGrid">
+        <div class="agent-card" style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:48px;height:48px;border-radius:12px;background:var(--blue-glow);border:1px solid rgba(64,196,255,.3);display:flex;align-items:center;justify-content:center;font-size:24px">🔍</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">SEO Agent</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Analyserer ranking...</div>
+            </div>
+            <span style="margin-left:auto;padding:2px 8px;background:var(--green-glow);color:var(--green);border-radius:8px;font-size:9px;font-weight:600">AKTIV</span>
+          </div>
+          <div style="height:4px;background:var(--bg-secondary);border-radius:2px;overflow:hidden">
+            <div style="width:78%;height:100%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:2px"></div>
+          </div>
+        </div>
+        <div class="agent-card" style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:48px;height:48px;border-radius:12px;background:var(--green-glow);border:1px solid rgba(0,230,118,.3);display:flex;align-items:center;justify-content:center;font-size:24px">📈</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">Trading Bot</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Overvåger markeder...</div>
+            </div>
+            <span style="margin-left:auto;padding:2px 8px;background:var(--green-glow);color:var(--green);border-radius:8px;font-size:9px;font-weight:600">LIVE</span>
+          </div>
+          <div style="height:4px;background:var(--bg-secondary);border-radius:2px;overflow:hidden">
+            <div style="width:100%;height:100%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:2px"></div>
+          </div>
+        </div>
+        <div class="agent-card" style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:48px;height:48px;border-radius:12px;background:var(--yellow-glow);border:1px solid rgba(255,215,64,.3);display:flex;align-items:center;justify-content:center;font-size:24px">🚛</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">MLflyt Agent</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Genererer tilbud...</div>
+            </div>
+            <span style="margin-left:auto;padding:2px 8px;background:var(--yellow-glow);color:var(--yellow);border-radius:8px;font-size:9px;font-weight:600">TÆNKER</span>
+          </div>
+          <div style="height:4px;background:var(--bg-secondary);border-radius:2px;overflow:hidden">
+            <div style="width:45%;height:100%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:2px"></div>
+          </div>
+        </div>
+        <div class="agent-card" style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);padding:16px;opacity:.6">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-glow);border:1px solid rgba(108,92,231,.3);display:flex;align-items:center;justify-content:center;font-size:24px">🛍️</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">Sacred Shop Agent</div>
+              <div style="font-size:11px;color:var(--text-secondary)">Venter på opgaver...</div>
+            </div>
+            <span style="margin-left:auto;padding:2px 8px;background:rgba(100,100,140,.2);color:var(--text-dim);border-radius:8px;font-size:9px;font-weight:600">IDLE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- /view-agents -->
+
+</div><!-- /app -->
 
 <!-- ═══ DOCUMENT PREVIEW MODAL ═══ -->
 <div class="doc-preview-overlay" id="docPreview">
@@ -1077,12 +1289,60 @@ document.querySelectorAll('.quick-btn').forEach(btn=>{
 });
 
 // ── Header Tabs ──
+// ── View Switching ──
+function switchView(viewName){
+  // Update tabs
+  document.querySelectorAll('.header-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector(`.header-tab[data-view="${viewName}"]`)?.classList.add('active');
+  
+  // Update views
+  document.querySelectorAll('.view-section').forEach(v=>v.classList.remove('active'));
+  document.getElementById(`view-${viewName}`)?.classList.add('active');
+  
+  // Redraw chart if trading view
+  if(viewName==='trading'){
+    setTimeout(()=>{
+      const canvas=document.getElementById('tradingChartLive');
+      if(canvas) drawChartLive();
+    },100);
+  }
+}
+
 document.querySelectorAll('.header-tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
-    document.querySelectorAll('.header-tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
+    switchView(tab.dataset.view);
   });
 });
+
+// ── Project Selection ──
+function selectProject(project){
+  document.querySelectorAll('#projectList .doc-item').forEach(i=>i.classList.remove('active'));
+  document.querySelector(`#projectList .doc-item[data-project="${project}"]`)?.classList.add('active');
+  
+  const details={
+    mlflyt:{icon:'🚛',name:'MLflyt',status:'Flyttefirma · SEO · 47 GEO sider',badge:'Aktiv',badgeColor:'var(--green)',stats:[47,3,'#8'],tasks:'3 nye GEO sider genereret til Skanderborg-området'},
+    sacred:{icon:'🌿',name:'Sacred Pet',status:'CBD Kæledyr · Webshop · Klar til launch',badge:'Klar',badgeColor:'var(--blue)',stats:[10,0,'-'],tasks:'Mangler: Analytics, domæne, Formspree integration'},
+    akaffald:{icon:'🗑️',name:'AK Affaldsservice',status:'Affald/Nedrivning · B2B fokus',badge:'Aktiv',badgeColor:'var(--green)',stats:[6,2,'#12'],tasks:'2 tilbud sendt, venter på svar fra kunder'},
+    trading:{icon:'📈',name:'Trading Bot',status:'Bybit Futures · Mean Reversion',badge:'LIVE',badgeColor:'var(--green)',stats:[2,'$297','+0%'],tasks:'2 åbne positioner: BTC SHORT @ $79,559, ETH SHORT @ $2,397'}
+  };
+  
+  const d=details[project];
+  if(d){
+    document.getElementById('projectDetail').innerHTML=`
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <span style="font-size:32px">${d.icon}</span>
+        <div>
+          <div style="font-size:18px;font-weight:700">${d.name}</div>
+          <div style="font-size:12px;color:var(--text-secondary)">${d.status}</div>
+        </div>
+        <span style="margin-left:auto;padding:4px 12px;background:${d.badgeColor}20;color:${d.badgeColor};border-radius:12px;font-size:11px;font-weight:600">${d.badge}</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+        <p style="margin-bottom:12px"><strong>Sidste aktivitet:</strong> ${d.tasks}</p>
+      </div>
+    `;
+  }
+}
 
 // ── Trading Timeframes ──
 document.querySelectorAll('.trading-tf').forEach(tf=>{
